@@ -13,27 +13,26 @@ interface ReferenceDisplayProps {
 
 export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({ alignment }) => {
   return (
-    <div className="p-4 bg-white rounded-lg shadow-sm border border-gray-100 min-h-[150px]">
-      <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+    <div className="p-6 bg-zinc-900/50 rounded-2xl border border-zinc-800 min-h-[150px] shadow-xl">
+      <h2 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em] mb-4">
         Reference Text
       </h2>
-      <div className="flex flex-wrap gap-x-2 gap-y-1 text-lg leading-relaxed">
+      <div className="flex flex-wrap gap-x-2 gap-y-3 text-xl leading-relaxed font-medium">
         {alignment.length === 0 ? (
-          <span className="text-gray-300 italic">No reference text loaded...</span>
+          <span className="text-zinc-700 italic">No reference text loaded...</span>
         ) : (
           alignment.map((item, idx) => {
-            // Only show tokens that have a reference part
             if (!item.ref) return null;
 
             return (
               <span
                 key={idx}
                 className={cn(
-                  "px-0.5 rounded transition-colors duration-200",
-                  item.status === "correct" && "bg-green-100 text-green-800",
-                  item.status === "omitted" && "bg-red-50 text-red-400 line-through",
-                  item.status === "substituted" && "bg-yellow-100 text-yellow-800 border-b-2 border-yellow-400",
-                  item.status === "inserted" && "hidden" // Insertions don't show in reference view
+                  "px-1.5 py-0.5 rounded-md transition-all duration-300",
+                  item.status === "correct" && "text-emerald-400 bg-emerald-400/10",
+                  item.status === "omitted" && "text-rose-500/50 line-through decoration-rose-500/30",
+                  item.status === "substituted" && "text-amber-400 bg-amber-400/10 border-b border-amber-400/50",
+                  item.status === "inserted" && "hidden"
                 )}
               >
                 {item.ref}

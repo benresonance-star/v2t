@@ -10,22 +10,24 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
   isTranscribing,
 }) => {
   return (
-    <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 min-h-[100px]">
-      <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+    <div className="p-6 bg-zinc-900/30 rounded-2xl border border-zinc-800/50 min-h-[120px] backdrop-blur-sm">
+      <h2 className="text-[10px] font-bold text-zinc-500 uppercase tracking-[0.2em] mb-4">
         Your Speech
       </h2>
-      <div className="text-gray-700 italic leading-relaxed">
+      <div className="text-zinc-300 italic text-lg leading-relaxed">
         {isTranscribing ? (
-          <div className="flex items-center gap-2 text-blue-500">
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce" />
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:0.2s]" />
-            <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce [animation-delay:0.4s]" />
-            <span>Transcribing...</span>
+          <div className="flex items-center gap-3 text-sky-400">
+            <div className="flex gap-1">
+              <div className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce [animation-duration:0.8s]" />
+              <div className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce [animation-duration:0.8s] [animation-delay:0.2s]" />
+              <div className="w-1.5 h-1.5 bg-sky-400 rounded-full animate-bounce [animation-duration:0.8s] [animation-delay:0.4s]" />
+            </div>
+            <span className="text-sm font-medium tracking-wide">Processing audio...</span>
           </div>
         ) : transcript ? (
-          transcript
+          <span className="not-italic text-zinc-200">{transcript}</span>
         ) : (
-          <span className="text-gray-400">Speech transcript will appear here...</span>
+          <span className="text-zinc-600 text-base">Wait for transcript...</span>
         )}
       </div>
     </div>
