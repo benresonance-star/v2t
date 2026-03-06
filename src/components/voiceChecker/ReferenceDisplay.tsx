@@ -23,7 +23,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
   onEditToggle 
 }) => {
   return (
-    <div className="!p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
+    <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
       <div className="flex justify-between items-center px-6">
         <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
           Target Passage
@@ -46,7 +46,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         </button>
       </div>
       
-      <div className="glass-inner rounded-[1.5rem] min-h-[140px]">
+      <div className="p-12 glass-inner rounded-[1.5rem] min-h-[140px]">
         <div className="flex flex-wrap gap-x-2 gap-y-3 text-[18px] leading-relaxed font-normal text-white">
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>

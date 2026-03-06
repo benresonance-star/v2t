@@ -38,7 +38,7 @@ export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <main className="min-h-screen flex flex-col items-center px-12 md:px-24 py-12 md:py-20 max-w-4xl mx-auto">
+    <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px]">
       <div className="w-full flex flex-col gap-16">
         {/* Header */}
         <header className="text-center space-y-2">
@@ -70,7 +70,7 @@ export default function Home() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="w-full"
               >
-                <div className="!p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
+                <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
                   <div className="flex justify-between items-center px-0">
                     <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
                       Edit Passage
@@ -90,7 +90,7 @@ export default function Home() {
                   <textarea
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    className="w-full !p-12 min-h-[160px] rounded-[1.5rem] glass-inner !text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent"
+                    className="w-full p-12 min-h-[160px] rounded-[1.5rem] glass-inner !text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent"
                     placeholder="Enter reference text here..."
                     onInput={(e) => {
                       const target = e.target as HTMLTextAreaElement;
