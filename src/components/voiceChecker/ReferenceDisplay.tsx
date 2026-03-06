@@ -64,13 +64,13 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
                     }}
                     transition={{ duration: 0.3 }}
                     className={cn(
-                      "relative inline-block",
+                      "relative inline-block whitespace-pre",
                       item.status === "substituted" && "border-b border-amber-400/40"
                     )}
                   >
                     {item.ref}
                   </motion.span>
-                  {idx < alignment.length - 1 && <span> </span>}
+                  {idx < alignment.length - 1 && <span className="whitespace-pre"> </span>}
                 </React.Fragment>
               );
             })
