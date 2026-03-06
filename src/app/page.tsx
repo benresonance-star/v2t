@@ -70,7 +70,7 @@ export default function Home() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="w-full"
               >
-                <div className="p-8 glass-panel rounded-[2rem] flex flex-col gap-4">
+                <div className="p-8 glass-panel rounded-[2rem] flex flex-col gap-6">
                   <div className="flex justify-between items-center px-0">
                     <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
                       Edit Passage
@@ -81,16 +81,16 @@ export default function Home() {
                         setReferenceText(inputText);
                         localStorage.setItem("v2t_target_passage", inputText);
                       }}
-                      className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#f00000] text-white text-[12px] font-bold transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95"
+                      className="flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-[#f00000] text-white text-[12px] font-bold uppercase transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95 min-w-[120px]"
                     >
                       <Check size={14} strokeWidth={3} />
-                      Save Text
+                      SAVE TEXT
                     </button>
                   </div>
                   <textarea
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    className="w-full p-8 min-h-[160px] rounded-[1.5rem] glass-inner text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent"
+                    className="w-full p-12 min-h-[160px] rounded-[1.5rem] glass-inner !text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent"
                     placeholder="Enter reference text here..."
                     onInput={(e) => {
                       const target = e.target as HTMLTextAreaElement;
