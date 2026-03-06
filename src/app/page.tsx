@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useVoiceChecker } from "@/hooks/useVoiceChecker";
 import { ReferenceDisplay } from "@/components/voiceChecker/ReferenceDisplay";
@@ -42,22 +43,38 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px]">
       <div className="w-full flex flex-col gap-16">
         {/* Header */}
-        <header className="text-center space-y-2">
-          <motion.h1 
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-3xl font-semibold text-white tracking-tight"
+        <header className="text-center space-y-6">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="flex justify-center"
           >
-            Voice Checker
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.1 }}
-            className="text-zinc-500 text-sm font-normal"
-          >
-            Practice your recitation and get instant feedback.
-          </motion.p>
+            <Image
+              src="/logo.png"
+              alt="RECITE Logo"
+              width={120}
+              height={120}
+              className="rounded-[2rem] shadow-2xl"
+              priority
+            />
+          </motion.div>
+          <div className="space-y-2">
+            <motion.h1 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-3xl font-semibold text-white tracking-tight"
+            >
+              RECITE
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="text-zinc-500 text-sm font-normal"
+            >
+              Practice your recitation and get instant feedback.
+            </motion.p>
+          </div>
         </header>
 
         {/* Reference Input/Display Area */}
