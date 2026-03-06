@@ -1,4 +1,6 @@
-export type MatchStatus = "correct" | "omitted" | "inserted" | "substituted";
+import { normalizeToken } from "./normalize";
+
+export type MatchStatus = "correct" | "omitted" | "inserted" | "substituted" | "whitespace";
 
 export interface AlignmentResult {
   ref: string | null;
@@ -7,9 +9,8 @@ export interface AlignmentResult {
 }
 
 /**
- * Aligns reference tokens with spoken tokens using a simple word-by-word comparison.
- * For MVP, we use a basic greedy alignment. This can be upgraded to 
- * Needleman-Wunsch or Smith-Waterman for more robust alignment later.
+ * Aligns reference tokens with spoken tokens.
+ * Preserves whitespace and punctuation in the reference tokens.
  */
 export function alignTokens(
   referenceTokens: string[],
@@ -19,40 +20,59 @@ export function alignTokens(
   let refIdx = 0;
   let spokenIdx = 0;
 
-  while (refIdx < referenceTokens.length || spokenIdx < spokenTokens.length) {
-    const refToken = referenceTokens[refIdx];
-    const spokenToken = spokenTokens[spokenIdx];
+  // Filter spoken tokens to only include non-whitespace for easier matching
+  const cleanSpoken = spokenTokens.filter(t => t.trim() !== "");
+  let cleanSpokenIdx = 0;
 
-    if (refToken && spokenToken) {
-      if (refToken === spokenToken) {
+  while (refIdx < referenceTokens.length) {
+    const refToken = referenceTokens[refIdx];
+    
+    // If it's pure whitespace, just push it as is
+    if (refToken.trim() === "") {
+      alignment.push({ ref: refToken, spoken: null, status: "whitespace" });
+      refIdx++;
+      continue;
+    }
+
+    const spokenToken = cleanSpoken[cleanSpokenIdx];
+
+    if (spokenToken) {
+      const normRef = normalizeToken(refToken);
+      const normSpoken = normalizeToken(spokenToken);
+
+      if (normRef === normSpoken) {
         alignment.push({ ref: refToken, spoken: spokenToken, status: "correct" });
         refIdx++;
-        spokenIdx++;
+        cleanSpokenIdx++;
       } else {
-        // Simple heuristic: check if next spoken matches current ref (insertion)
-        // or if next ref matches current spoken (omission)
-        const nextSpoken = spokenTokens[spokenIdx + 1];
-        const nextRef = referenceTokens[refIdx + 1];
-
-        if (nextSpoken === refToken) {
+        // Simple lookahead
+        const nextSpoken = cleanSpoken[cleanSpokenIdx + 1];
+        const nextRefToken = referenceTokens.slice(refIdx + 1).find(t => t.trim() !== "");
+        
+        if (nextSpoken && normalizeToken(nextSpoken) === normRef) {
+          // Spoken has an insertion, but we are iterating primarily by ref
+          // So we mark current spoken as inserted and stay on current ref
           alignment.push({ ref: null, spoken: spokenToken, status: "inserted" });
-          spokenIdx++;
-        } else if (nextRef === spokenToken) {
+          cleanSpokenIdx++;
+        } else if (nextRefToken && normalizeToken(nextRefToken) === normSpoken) {
           alignment.push({ ref: refToken, spoken: null, status: "omitted" });
           refIdx++;
         } else {
           alignment.push({ ref: refToken, spoken: spokenToken, status: "substituted" });
           refIdx++;
-          spokenIdx++;
+          cleanSpokenIdx++;
         }
       }
-    } else if (refToken) {
+    } else {
       alignment.push({ ref: refToken, spoken: null, status: "omitted" });
       refIdx++;
-    } else if (spokenToken) {
-      alignment.push({ ref: null, spoken: spokenToken, status: "inserted" });
-      spokenIdx++;
     }
+  }
+
+  // Add remaining spoken tokens as insertions
+  while (cleanSpokenIdx < cleanSpoken.length) {
+    alignment.push({ ref: null, spoken: cleanSpoken[cleanSpokenIdx], status: "inserted" });
+    cleanSpokenIdx++;
   }
 
   return alignment;

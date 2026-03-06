@@ -45,7 +45,7 @@ export function useVoiceChecker(initialReferenceText: string) {
       const result = alignTokens(refTokens, spokenTokens);
       
       setAlignment(result);
-      setScore(calculateScore(result, refTokens.length));
+      setScore(calculateScore(result));
     } catch (err: any) {
       setError(err.message || "Transcription failed");
     }

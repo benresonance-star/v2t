@@ -1,19 +1,19 @@
 /**
- * Normalizes text by converting to lowercase, removing punctuation,
- * and collapsing multiple whitespaces.
+ * Tokenizes text into an array of words, preserving punctuation and returns.
  */
-export function normalizeText(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "")
-    .replace(/\s{2,}/g, " ")
-    .trim();
+export function tokenizeText(text: string): string[] {
+  // Split by whitespace but keep the whitespace as part of the tokens or as separate tokens
+  // To keep it simple and preserve the exact display, we split by space/newline 
+  // but we need to be careful about how we align.
+  return text === "" ? [] : text.split(/(\s+)/);
 }
 
 /**
- * Tokenizes text into an array of words.
+ * Normalizes a single token for comparison (removes punctuation and lowercase).
  */
-export function tokenizeText(text: string): string[] {
-  const normalized = normalizeText(text);
-  return normalized === "" ? [] : normalized.split(" ");
+export function normalizeToken(token: string): string {
+  return token
+    .toLowerCase()
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "")
+    .trim();
 }

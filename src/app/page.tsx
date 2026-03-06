@@ -71,7 +71,7 @@ export default function Home() {
                 className="w-full"
               >
                 <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
-                  <div className="flex justify-between items-center px-0">
+                  <div className="flex justify-between items-center px-[25px]">
                     <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
                       Edit Passage
                     </h2>
@@ -81,29 +81,30 @@ export default function Home() {
                         setReferenceText(inputText);
                         localStorage.setItem("v2t_target_passage", inputText);
                       }}
-                      className="flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-[#f00000] text-white text-[12px] font-bold uppercase transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95 min-w-[120px]"
+                      className="flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-[#f00000] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95 min-w-[120px] border-none"
                     >
-                      <Check size={14} strokeWidth={3} />
-                      SAVE TEXT
+                      SAVE
                     </button>
                   </div>
-                  <textarea
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                    className="w-full p-12 min-h-[160px] rounded-[1.5rem] glass-inner !text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent"
-                    placeholder="Enter reference text here..."
-                    onInput={(e) => {
-                      const target = e.target as HTMLTextAreaElement;
-                      target.style.height = "auto";
-                      target.style.height = `${target.scrollHeight}px`;
-                    }}
-                    ref={(el) => {
-                      if (el) {
-                        el.style.height = "auto";
-                        el.style.height = `${el.scrollHeight}px`;
-                      }
-                    }}
-                  />
+                  <div className="mx-[25px] mb-[25px] rounded-[1.5rem] glass-inner">
+                    <textarea
+                      value={inputText}
+                      onChange={(e) => setInputText(e.target.value)}
+                      className="w-full p-12 min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 font-sans"
+                      placeholder="Enter reference text here..."
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = "auto";
+                        target.style.height = `${target.scrollHeight}px`;
+                      }}
+                      ref={(el) => {
+                        if (el) {
+                          el.style.height = "auto";
+                          el.style.height = `${el.scrollHeight}px`;
+                        }
+                      }}
+                    />
+                  </div>
                 </div>
               </motion.div>
             ) : (
@@ -124,7 +125,7 @@ export default function Home() {
         </section>
 
         {/* Feedback Area */}
-        <section className="mt-8 space-y-6">
+        <section className="mt-[25px] space-y-6">
           <TranscriptPanel 
             transcript={transcript} 
             isTranscribing={isTranscribing} 

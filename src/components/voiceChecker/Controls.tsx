@@ -27,7 +27,7 @@ export const Controls: React.FC<ControlsProps> = ({
         className="w-[100px] h-[50px] rounded-full glass-button text-white hover:bg-white/10 transition-all active:scale-90 shadow-xl flex items-center justify-center"
         title="Reset"
       >
-        <RotateCcw size={32} />
+        <RotateCcw size={32} color="#ffffff" />
       </button>
 
       {/* Glossy Record Button */}
@@ -50,14 +50,14 @@ export const Controls: React.FC<ControlsProps> = ({
             disabled={isTranscribing}
             className="w-[100px] h-[50px] rounded-full glass-button bg-gradient-to-b from-white/10 to-white/5 border-white/20 shadow-[inset_0_1px_2px_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.5)] flex items-center justify-center hover:from-white/20 hover:to-white/10 transition-all active:scale-95 disabled:opacity-20"
           >
-            <Mic size={32} className="text-white" />
+            <Mic size={32} color="#ffffff" />
           </button>
         ) : (
           <button
             onClick={onStop}
             className="w-[100px] h-[50px] rounded-full bg-gradient-to-b from-rose-500 to-rose-700 border border-white/20 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),0_0_30px_rgba(244,63,94,0.4)] flex items-center justify-center active:scale-95"
           >
-            <Square size={32} fill="white" className="text-white" />
+            <Square size={32} fill="white" color="#ffffff" />
           </button>
         )}
       </div>
