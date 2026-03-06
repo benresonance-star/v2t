@@ -4,7 +4,6 @@ const nextConfig = {
     localPatterns: [
       {
         pathname: '/logo.png',
-        search: '',
       },
     ],
   },
