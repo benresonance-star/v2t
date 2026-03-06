@@ -1,4 +1,6 @@
-module.exports = {
+import { defineConfig } from 'jest';
+
+export default {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
   moduleNameMapper: {
