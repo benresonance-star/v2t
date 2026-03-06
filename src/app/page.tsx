@@ -90,7 +90,7 @@ export default function Home() {
                     <textarea
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
-                      className="w-full p-12 min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 font-sans"
+                      className="w-full p-12 px-[37px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 font-sans"
                       placeholder="Enter reference text here..."
                       onInput={(e) => {
                         const target = e.target as HTMLTextAreaElement;

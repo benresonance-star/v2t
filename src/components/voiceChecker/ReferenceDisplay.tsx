@@ -37,7 +37,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       </div>
       
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px]">
-        <div className="flex flex-wrap text-[18px] leading-relaxed font-normal text-white">
+        <div className="flex flex-wrap text-[18px] leading-relaxed font-normal text-white px-[25px]">
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
           ) : (

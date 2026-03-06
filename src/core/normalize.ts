@@ -14,6 +14,6 @@ export function tokenizeText(text: string): string[] {
 export function normalizeToken(token: string): string {
   return token
     .toLowerCase()
-    .replace(/[.,/#!$%^&*;:{}=\-_`~()]/g, "")
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()"'?<>]/g, "")
     .trim();
 }
