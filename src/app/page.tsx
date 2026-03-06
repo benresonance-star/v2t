@@ -19,6 +19,7 @@ export default function Home() {
     score,
     isRecording,
     isTranscribing,
+    hasMicrophone,
     error,
     handleStart,
     handleStop,
@@ -155,6 +156,7 @@ export default function Home() {
           <Controls
             isRecording={isRecording}
             isTranscribing={isTranscribing}
+            hasMicrophone={hasMicrophone}
             onStart={handleStart}
             onStop={handleStop}
             onReset={handleReset}
@@ -162,7 +164,7 @@ export default function Home() {
         </section>
 
         {/* Instructions */}
-        <footer className="mt-4 glass-panel rounded-[1.5rem] overflow-hidden max-w-lg mx-auto w-full">
+        <footer className="mt-4 mb-[20px] glass-panel rounded-[1.5rem] overflow-hidden max-w-lg mx-auto w-full">
           <div className="py-3 text-center border-b border-white/5 bg-white/[0.01]">
             <h4 className="text-[10px] font-semibold text-zinc-500 uppercase tracking-[0.15em]">How to use</h4>
           </div>
@@ -176,7 +178,7 @@ export default function Home() {
             ].map((step, i) => (
               <div key={i} className="flex flex-col items-center justify-center py-3 px-6 text-center group hover:bg-white/[0.01] transition-colors">
                 <p className="text-[13px] font-medium text-[#878787] group-hover:text-zinc-300 transition-colors leading-relaxed">
-                  <span className="mr-2 opacity-50">{i + 1}</span>
+                  <span className="mr-[5px] opacity-50">{i + 1}</span>
                   {step}
                 </p>
               </div>

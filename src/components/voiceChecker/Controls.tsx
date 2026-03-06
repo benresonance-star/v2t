@@ -7,6 +7,7 @@ import { Mic, Square, RotateCcw } from "lucide-react";
 interface ControlsProps {
   isRecording: boolean;
   isTranscribing: boolean;
+  hasMicrophone: boolean | null;
   onStart: () => void;
   onStop: () => void;
   onReset: () => void;
@@ -15,10 +16,14 @@ interface ControlsProps {
 export const Controls: React.FC<ControlsProps> = ({
   isRecording,
   isTranscribing,
+  hasMicrophone,
   onStart,
   onStop,
   onReset,
 }) => {
+  const micColor = hasMicrophone === false ? "#ef4444" : "#22c55e";
+  const resetColor = hasMicrophone === false ? "#ef4444" : "#f97316";
+
   return (
     <div className="flex items-center justify-center w-full py-[75px] gap-[75px]">
       {/* Reset Button */}
@@ -27,7 +32,7 @@ export const Controls: React.FC<ControlsProps> = ({
         className="w-[100px] h-[50px] rounded-full glass-button text-white hover:bg-white/10 transition-all active:scale-90 shadow-xl flex items-center justify-center"
         title="Reset"
       >
-        <RotateCcw size={32} color="#ffffff" />
+        <RotateCcw size={32} color={resetColor} />
       </button>
 
       {/* Glossy Record Button */}
@@ -39,7 +44,7 @@ export const Controls: React.FC<ControlsProps> = ({
               animate={{ scale: 1.4, opacity: 0.15 }}
               exit={{ scale: 1.8, opacity: 0 }}
               transition={{ repeat: Infinity, duration: 1.5, ease: "easeOut" }}
-              className="absolute inset-0 rounded-full bg-rose-500 blur-md"
+              className="absolute inset-0 rounded-full bg-green-500 blur-md"
             />
           )}
         </AnimatePresence>
@@ -50,12 +55,12 @@ export const Controls: React.FC<ControlsProps> = ({
             disabled={isTranscribing}
             className="w-[100px] h-[50px] rounded-full glass-button bg-gradient-to-b from-white/10 to-white/5 border-white/20 shadow-[inset_0_1px_2px_rgba(255,255,255,0.1),0_8px_24px_rgba(0,0,0,0.5)] flex items-center justify-center hover:from-white/20 hover:to-white/10 transition-all active:scale-95 disabled:opacity-20"
           >
-            <Mic size={32} color="#ffffff" />
+            <Mic size={32} color={micColor} />
           </button>
         ) : (
           <button
             onClick={onStop}
-            className="w-[100px] h-[50px] rounded-full bg-gradient-to-b from-rose-500 to-rose-700 border border-white/20 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),0_0_30px_rgba(244,63,94,0.4)] flex items-center justify-center active:scale-95"
+            className="w-[100px] h-[50px] rounded-full bg-gradient-to-b from-green-500 to-green-700 border border-white/20 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),0_0_30px_rgba(34,197,94,0.4)] flex items-center justify-center active:scale-95"
           >
             <Square size={32} fill="white" color="#ffffff" />
           </button>

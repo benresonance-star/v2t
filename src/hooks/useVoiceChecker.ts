@@ -11,7 +11,7 @@ export function useVoiceChecker(initialReferenceText: string) {
   const [score, setScore] = useState(0);
   const [error, setError] = useState<string | undefined>();
 
-  const { isRecording, isTranscribing, startRecording, stopRecording } = useSpeech();
+  const { isRecording, isTranscribing, hasMicrophone, startRecording, stopRecording } = useSpeech();
 
   // Initialize alignment when reference text changes
   useEffect(() => {
@@ -28,12 +28,16 @@ export function useVoiceChecker(initialReferenceText: string) {
 
   const handleStart = useCallback(async () => {
     setError(undefined);
+    if (hasMicrophone === false) {
+      setError("No microphone detected on this device.");
+      return;
+    }
     try {
       await startRecording();
     } catch (err: any) {
       setError(err.message || "Failed to start recording");
     }
-  }, [startRecording]);
+  }, [startRecording, hasMicrophone]);
 
   const handleStop = useCallback(async () => {
     try {
@@ -72,6 +76,7 @@ export function useVoiceChecker(initialReferenceText: string) {
     score,
     isRecording,
     isTranscribing,
+    hasMicrophone,
     error,
     handleStart,
     handleStop,

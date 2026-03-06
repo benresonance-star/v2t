@@ -1,10 +1,24 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { WhisperProvider } from "../services/whisperProvider";
 
 export function useSpeech() {
   const [isRecording, setIsRecording] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
+  const [hasMicrophone, setHasMicrophone] = useState<boolean | null>(null);
   const providerRef = useRef<WhisperProvider | null>(null);
+
+  useEffect(() => {
+    async function checkMicrophone() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const micAvailable = devices.some(device => device.kind === 'audioinput');
+        setHasMicrophone(micAvailable);
+      } catch (err) {
+        setHasMicrophone(false);
+      }
+    }
+    checkMicrophone();
+  }, []);
 
   const startRecording = useCallback(async () => {
     if (!providerRef.current) {
@@ -32,6 +46,7 @@ export function useSpeech() {
   return {
     isRecording,
     isTranscribing,
+    hasMicrophone,
     startRecording,
     stopRecording,
   };
