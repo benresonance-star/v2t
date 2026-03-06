@@ -5,8 +5,17 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Voice-to-Text Reference Checker",
+  title: "Recite - Voice-to-Text Reference Checker",
   description: "Check your speech against a reference text",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Recite",
+  },
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
