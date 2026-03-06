@@ -60,9 +60,9 @@ export default function Home() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="w-full"
               >
-                <div className="p-6 glass-panel rounded-[1.5rem] flex flex-col gap-4">
-                  <div className="flex justify-between items-center px-1">
-                    <h2 className="text-[11px] font-semibold text-zinc-400 uppercase tracking-[0.15em]">
+                <div className="p-6 glass-panel rounded-[1.5rem] flex flex-col gap-3">
+                  <div className="flex justify-between items-center px-5">
+                    <h2 className="text-[13px] font-medium text-zinc-200">
                       Edit Passage
                     </h2>
                     <button
@@ -70,7 +70,7 @@ export default function Home() {
                         setIsEditing(false);
                         setReferenceText(inputText);
                       }}
-                      className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white text-zinc-950 text-[10px] font-bold transition-all"
+                      className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-red-600 text-white text-[11px] font-bold transition-all hover:bg-red-700 shadow-lg"
                     >
                       Save Text
                     </button>
@@ -78,7 +78,7 @@ export default function Home() {
                   <textarea
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    className="w-full p-5 h-40 rounded-2xl glass-inner text-zinc-100 focus:ring-1 focus:ring-white/10 outline-none transition-all text-[17px] leading-relaxed resize-none"
+                    className="w-full p-6 h-40 rounded-[1.25rem] glass-inner text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[17px] leading-relaxed resize-none font-normal"
                     placeholder="Enter reference text here..."
                   />
                 </div>
