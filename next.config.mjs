@@ -1,6 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    localPatterns: [
+      {
+        pathname: '/logo.png',
+        search: '',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

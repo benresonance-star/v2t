@@ -50,7 +50,7 @@ export default function Home() {
             className="flex justify-center"
           >
             <Image
-              src="/logo.png"
+              src="/logo.png?v=2"
               alt="RECITE Logo"
               width={120}
               height={120}
@@ -66,14 +66,6 @@ export default function Home() {
             >
               RECITE
             </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1 }}
-              className="text-zinc-500 text-sm font-normal"
-            >
-              Practice your recitation and get instant feedback.
-            </motion.p>
           </div>
         </header>
 
