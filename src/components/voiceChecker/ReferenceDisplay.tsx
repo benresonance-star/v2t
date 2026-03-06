@@ -30,21 +30,21 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         </h2>
         <button
           onClick={onEditToggle}
-          className="flex items-center justify-center gap-1.5 px-6 py-2.5 rounded-full bg-[#f00000] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95 min-w-[120px] border-none"
+          className="flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
         >
           {isEditing ? "SAVE" : "EDIT"}
         </button>
       </div>
       
-      <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px]">
-        <div className="flex flex-wrap text-[18px] leading-relaxed font-normal text-white px-[25px]">
+      <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
+        <div className="text-[18px] leading-relaxed font-normal text-white px-[25px] break-words whitespace-pre-wrap">
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
           ) : (
             alignment.map((item, idx) => {
               if (item.status === "whitespace") {
                 return (
-                  <span key={idx} className="whitespace-pre">
+                  <span key={idx}>
                     {item.ref}
                   </span>
                 );
@@ -62,7 +62,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
                   }}
                   transition={{ duration: 0.3 }}
                   className={cn(
-                    "relative inline-block whitespace-pre",
+                    "relative inline",
                     item.status === "substituted" && "border-b border-amber-400/40"
                   )}
                 >
