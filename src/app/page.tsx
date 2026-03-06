@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center px-5 py-12 md:py-20 max-w-2xl mx-auto">
-      <div className="w-full flex flex-col gap-10">
+      <div className="w-full flex flex-col gap-16">
         {/* Header */}
         <header className="text-center space-y-2">
           <motion.h1 
