@@ -11,7 +11,16 @@ export function useVoiceChecker(initialReferenceText: string) {
   const [score, setScore] = useState(0);
   const [error, setError] = useState<string | undefined>();
 
-  const { isRecording, isTranscribing, hasMicrophone, startRecording, stopRecording } = useSpeech();
+  const { 
+    isRecording, 
+    isPaused,
+    isTranscribing, 
+    hasMicrophone, 
+    startRecording, 
+    pauseRecording,
+    resumeRecording,
+    stopRecording 
+  } = useSpeech();
 
   // Initialize alignment when reference text changes
   useEffect(() => {
@@ -38,6 +47,22 @@ export function useVoiceChecker(initialReferenceText: string) {
       setError(err.message || "Failed to start recording");
     }
   }, [startRecording, hasMicrophone]);
+
+  const handlePause = useCallback(async () => {
+    try {
+      await pauseRecording();
+    } catch (err: any) {
+      setError(err.message || "Failed to pause recording");
+    }
+  }, [pauseRecording]);
+
+  const handleResume = useCallback(async () => {
+    try {
+      await resumeRecording();
+    } catch (err: any) {
+      setError(err.message || "Failed to resume recording");
+    }
+  }, [resumeRecording]);
 
   const handleStop = useCallback(async () => {
     try {
@@ -75,10 +100,13 @@ export function useVoiceChecker(initialReferenceText: string) {
     alignment,
     score,
     isRecording,
+    isPaused,
     isTranscribing,
     hasMicrophone,
     error,
     handleStart,
+    handlePause,
+    handleResume,
     handleStop,
     handleReset,
   };

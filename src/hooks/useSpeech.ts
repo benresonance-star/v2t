@@ -3,6 +3,7 @@ import { WhisperProvider } from "../services/whisperProvider";
 
 export function useSpeech() {
   const [isRecording, setIsRecording] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const [isTranscribing, setIsTranscribing] = useState(false);
   const [hasMicrophone, setHasMicrophone] = useState<boolean | null>(null);
   const providerRef = useRef<WhisperProvider | null>(null);
@@ -26,12 +27,28 @@ export function useSpeech() {
     }
     await providerRef.current.startRecording();
     setIsRecording(true);
+    setIsPaused(false);
+  }, []);
+
+  const pauseRecording = useCallback(async () => {
+    if (providerRef.current) {
+      await providerRef.current.pauseRecording();
+      setIsPaused(true);
+    }
+  }, []);
+
+  const resumeRecording = useCallback(async () => {
+    if (providerRef.current) {
+      await providerRef.current.resumeRecording();
+      setIsPaused(false);
+    }
   }, []);
 
   const stopRecording = useCallback(async () => {
     if (!providerRef.current) return "";
     
     setIsRecording(false);
+    setIsPaused(false);
     setIsTranscribing(true);
     
     try {
@@ -45,9 +62,12 @@ export function useSpeech() {
 
   return {
     isRecording,
+    isPaused,
     isTranscribing,
     hasMicrophone,
     startRecording,
+    pauseRecording,
+    resumeRecording,
     stopRecording,
   };
 }

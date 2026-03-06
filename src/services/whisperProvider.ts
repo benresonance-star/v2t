@@ -48,6 +48,18 @@ export class WhisperProvider {
     });
   }
 
+  async pauseRecording(): Promise<void> {
+    if (this.mediaRecorder && this.mediaRecorder.state === "recording") {
+      this.mediaRecorder.pause();
+    }
+  }
+
+  async resumeRecording(): Promise<void> {
+    if (this.mediaRecorder && this.mediaRecorder.state === "paused") {
+      this.mediaRecorder.resume();
+    }
+  }
+
   async transcribe(audioBlob: Blob): Promise<string> {
     const formData = new FormData();
     formData.append("file", audioBlob, "audio.wav");

@@ -19,10 +19,13 @@ export default function Home() {
     transcript,
     score,
     isRecording,
+    isPaused,
     isTranscribing,
     hasMicrophone,
     error,
     handleStart,
+    handlePause,
+    handleResume,
     handleStop,
     handleReset,
     setReferenceText,
@@ -40,7 +43,7 @@ export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px]">
+    <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px] pt-[env(safe-area-inset-top)]">
       <div className="w-full flex flex-col gap-16">
         {/* Header */}
         <header className="text-center space-y-6">
@@ -164,9 +167,12 @@ export default function Home() {
 
           <Controls
             isRecording={isRecording}
+            isPaused={isPaused}
             isTranscribing={isTranscribing}
             hasMicrophone={hasMicrophone}
             onStart={handleStart}
+            onPause={handlePause}
+            onResume={handleResume}
             onStop={handleStop}
             onReset={handleReset}
           />
