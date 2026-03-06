@@ -16,9 +16,12 @@ body {
   background: radial-gradient(circle at center, #121214 0%, #000000 100%);
   color: var(--foreground);
   min-height: 100vh;
-  font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+textarea, input, button, select {
+  font-family: inherit;
 }
 
 .glass-panel {

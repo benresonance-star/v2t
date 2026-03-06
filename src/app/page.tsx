@@ -77,20 +77,26 @@ export default function Home() {
                     </h2>
                     <button
                       onClick={() => {
-                        setIsEditing(false);
-                        setReferenceText(inputText);
-                        localStorage.setItem("v2t_target_passage", inputText);
+                        try {
+                          localStorage.setItem("v2t_target_passage", inputText);
+                          setReferenceText(inputText);
+                          setIsEditing(false);
+                        } catch (e) {
+                          console.error("Failed to save to localStorage:", e);
+                          // Fallback or alert if needed
+                        }
                       }}
                       className="flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
                     >
                       SAVE
                     </button>
                   </div>
-                  <div className="mx-[25px] mb-[25px] rounded-[1.5rem] glass-inner">
+                  <div className="mx-[25px] mb-[25px] rounded-[1.5rem] glass-inner overflow-hidden relative">
                           <textarea
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
-                            className="w-full p-12 px-[25px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden"
+                            className="w-full p-12 pr-[50px] pl-[25px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block"
+                            style={{ boxSizing: 'border-box' }}
                             placeholder="Enter reference text here..."
                       onInput={(e) => {
                         const target = e.target as HTMLTextAreaElement;
