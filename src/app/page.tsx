@@ -28,7 +28,7 @@ export default function Home() {
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <main className="min-h-screen flex flex-col items-center px-5 py-12 md:py-20 max-w-2xl mx-auto">
+    <main className="min-h-screen flex flex-col items-center px-8 md:px-12 py-12 md:py-20 max-w-2xl mx-auto">
       <div className="w-full flex flex-col gap-16">
         {/* Header */}
         <header className="text-center space-y-2">
@@ -132,9 +132,9 @@ export default function Home() {
         </section>
 
         {/* Instructions */}
-        <footer className="mt-4 glass-panel rounded-[1.5rem] overflow-hidden">
-          <div className="py-4 text-center border-b border-white/5 bg-white/[0.01]">
-            <h4 className="text-[11px] font-semibold text-zinc-400 uppercase tracking-[0.15em]">How to use</h4>
+        <footer className="mt-4 glass-panel rounded-[1.5rem] overflow-hidden max-w-lg mx-auto w-full">
+          <div className="py-3 text-center border-b border-white/5 bg-white/[0.01]">
+            <h4 className="text-[10px] font-semibold text-zinc-500 uppercase tracking-[0.15em]">How to use</h4>
           </div>
           
           <div className="divide-y divide-white/5">
@@ -144,11 +144,11 @@ export default function Home() {
               "Recite the text clearly and tap stop.",
               "Review your accuracy and retry."
             ].map((step, i) => (
-              <div key={i} className="flex items-center gap-5 px-8 py-5 group hover:bg-white/[0.01] transition-colors">
-                <span className="w-6 h-6 rounded-full flex items-center justify-center bg-zinc-900 text-[10px] font-bold text-zinc-500 border border-white/5 group-hover:border-white/10 transition-colors">
-                  {i + 1}
-                </span>
-                <p className="text-[14px] font-medium text-zinc-400 group-hover:text-zinc-300 transition-colors">{step}</p>
+              <div key={i} className="flex flex-col items-center justify-center py-4 px-6 text-center group hover:bg-white/[0.01] transition-colors">
+                <p className="text-[13px] font-medium text-[#878787] group-hover:text-zinc-300 transition-colors leading-relaxed">
+                  <span className="mr-2 opacity-50">{i + 1}</span>
+                  {step}
+                </p>
               </div>
             ))}
           </div>
