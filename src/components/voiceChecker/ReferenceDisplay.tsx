@@ -55,21 +55,23 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
               if (!item.ref) return null;
 
               return (
-                <motion.span
-                  key={idx}
-                  initial={false}
-                  animate={{
-                    color: "#ffffff",
-                    opacity: item.status === "correct" ? 1 : 0.6,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className={cn(
-                    "relative inline-block",
-                    item.status === "substituted" && "border-b border-amber-400/40"
-                  )}
-                >
-                  {item.ref}
-                </motion.span>
+                <React.Fragment key={idx}>
+                  <motion.span
+                    initial={false}
+                    animate={{
+                      color: "#ffffff",
+                      opacity: item.status === "correct" ? 1 : 0.6,
+                    }}
+                    transition={{ duration: 0.3 }}
+                    className={cn(
+                      "relative inline-block",
+                      item.status === "substituted" && "border-b border-amber-400/40"
+                    )}
+                  >
+                    {item.ref}
+                  </motion.span>
+                  {idx < alignment.length - 1 && <span> </span>}
+                </React.Fragment>
               );
             })
           )}

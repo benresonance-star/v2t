@@ -1,17 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useVoiceChecker } from "@/hooks/useVoiceChecker";
 import { ReferenceDisplay } from "@/components/voiceChecker/ReferenceDisplay";
 import { TranscriptPanel } from "@/components/voiceChecker/TranscriptPanel";
 import { Controls } from "@/components/voiceChecker/Controls";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Check } from "lucide-react";
 
 const DEFAULT_REFERENCE = "For God so loved the world that he gave his only Son that whoever believes in him should not perish but have eternal life";
 
 export default function Home() {
   const [inputText, setInputText] = useState(DEFAULT_REFERENCE);
+
   const {
     alignment,
     transcript,
@@ -25,10 +26,19 @@ export default function Home() {
     setReferenceText,
   } = useVoiceChecker(inputText);
 
+  // Load from localStorage on mount
+  useEffect(() => {
+    const saved = localStorage.getItem("v2t_target_passage");
+    if (saved) {
+      setInputText(saved);
+      setReferenceText(saved);
+    }
+  }, [setReferenceText]);
+
   const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <main className="min-h-screen flex flex-col items-center px-8 md:px-12 py-12 md:py-20 max-w-2xl mx-auto">
+    <main className="min-h-screen flex flex-col items-center px-12 md:px-24 py-12 md:py-20 max-w-4xl mx-auto">
       <div className="w-full flex flex-col gap-16">
         {/* Header */}
         <header className="text-center space-y-2">
@@ -69,6 +79,7 @@ export default function Home() {
                       onClick={() => {
                         setIsEditing(false);
                         setReferenceText(inputText);
+                        localStorage.setItem("v2t_target_passage", inputText);
                       }}
                       className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#f00000] text-white text-[12px] font-bold transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95"
                     >
@@ -102,7 +113,7 @@ export default function Home() {
         </section>
 
         {/* Feedback Area */}
-        <section className="space-y-6">
+        <section className="mt-8 space-y-6">
           <TranscriptPanel 
             transcript={transcript} 
             isTranscribing={isTranscribing} 
