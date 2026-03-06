@@ -60,9 +60,9 @@ export default function Home() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="w-full"
               >
-                <div className="p-6 glass-panel rounded-[1.5rem] flex flex-col gap-3">
-                  <div className="flex justify-between items-center px-5">
-                    <h2 className="text-[13px] font-medium text-zinc-200">
+                <div className="p-8 glass-panel rounded-[2rem] flex flex-col gap-4">
+                  <div className="flex justify-between items-center px-0">
+                    <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
                       Edit Passage
                     </h2>
                     <button
@@ -70,15 +70,16 @@ export default function Home() {
                         setIsEditing(false);
                         setReferenceText(inputText);
                       }}
-                      className="flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-red-600 text-white text-[11px] font-bold transition-all hover:bg-red-700 shadow-lg"
+                      className="flex items-center gap-1.5 px-5 py-2 rounded-full bg-[#f00000] text-white text-[12px] font-bold transition-all hover:bg-red-700 shadow-[0_0_20px_rgba(255,0,0,0.3)] hover:scale-105 active:scale-95"
                     >
+                      <Check size={14} strokeWidth={3} />
                       Save Text
                     </button>
                   </div>
                   <textarea
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
-                    className="w-full p-6 h-40 rounded-[1.25rem] glass-inner text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[17px] leading-relaxed resize-none font-normal"
+                    className="w-full p-8 h-40 rounded-[1.5rem] glass-inner text-white focus:ring-1 focus:ring-white/10 outline-none transition-all text-[18px] leading-relaxed resize-none font-normal"
                     placeholder="Enter reference text here..."
                   />
                 </div>
@@ -144,7 +145,7 @@ export default function Home() {
               "Recite the text clearly and tap stop.",
               "Review your accuracy and retry."
             ].map((step, i) => (
-              <div key={i} className="flex flex-col items-center justify-center py-4 px-6 text-center group hover:bg-white/[0.01] transition-colors">
+              <div key={i} className="flex flex-col items-center justify-center py-3 px-6 text-center group hover:bg-white/[0.01] transition-colors">
                 <p className="text-[13px] font-medium text-[#878787] group-hover:text-zinc-300 transition-colors leading-relaxed">
                   <span className="mr-2 opacity-50">{i + 1}</span>
                   {step}

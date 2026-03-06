@@ -15,12 +15,12 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
   score,
 }) => {
   return (
-    <div className="p-6 glass-panel rounded-[1.5rem] flex flex-col gap-6">
-      <div className="space-y-3">
-        <h2 className="text-[11px] font-semibold text-zinc-400 uppercase tracking-[0.15em]">
+    <div className="p-8 glass-panel rounded-[2rem] flex flex-col gap-8">
+      <div className="space-y-4">
+        <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
           Your Speech
         </h2>
-        <div className="text-zinc-300 italic text-lg leading-relaxed min-h-[40px]">
+        <div className="text-zinc-100 text-[18px] leading-relaxed min-h-[50px] font-normal">
           {isTranscribing ? (
             <div className="flex items-center gap-3 text-sky-400">
               <div className="flex gap-1">
