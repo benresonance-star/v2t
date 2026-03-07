@@ -75,8 +75,8 @@ export default function Home() {
             <Image
               src="/logo.png?v=2"
               alt="RECITE Logo"
-              width={75}
-              height={75}
+              width={91}
+              height={91}
               className="object-contain shadow-2xl"
               priority
             />

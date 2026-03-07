@@ -17,22 +17,22 @@ export const AccuracyGauge: React.FC<AccuracyGaugeProps> = ({
   const percentage = Math.round(score * 100);
 
   return (
-    <div className="!p-24 glass-panel rounded-[2rem] flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6">
       <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
         Accuracy
       </h2>
 
-      <div className="relative w-full max-w-[400px] mt-4 px-[15px]">
+      <div className="relative w-full max-w-[400px] mt-4">
         {/* Gradient Bar */}
-        <div className="h-[12px] w-full rounded-full bg-gradient-to-r from-[#ff3b30] via-[#ffcc00] to-[#34c759] relative overflow-hidden">
+        <div className="mx-[15px] h-[12px] rounded-full bg-gradient-to-r from-[#ff3b30] via-[#ffcc00] to-[#34c759] relative overflow-hidden">
           {/* Subtle overlay for depth */}
           <div className="absolute inset-0 bg-black/10" />
         </div>
 
         {/* Needle/Indicator */}
         <motion.div
-          initial={{ left: "0%" }}
-          animate={{ left: `${score * 100}%` }}
+          initial={{ left: "15px" }}
+          animate={{ left: `calc(15px + ${score * 100}% - ${score * 30}px)` }}
           transition={{ duration: 1, ease: "easeOut" }}
           className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 z-20"
         >
