@@ -32,6 +32,8 @@ export default function Home() {
     setReferenceText,
   } = useVoiceChecker(inputText);
 
+  const isTargetEmpty = inputText.trim() === "";
+
   // Load from localStorage on mount
   useEffect(() => {
     const saved = localStorage.getItem("v2t_target_passage");
@@ -217,6 +219,7 @@ export default function Home() {
             isPaused={isPaused}
             isTranscribing={isTranscribing}
             hasMicrophone={hasMicrophone}
+            isTargetEmpty={isTargetEmpty}
             onStart={handleStart}
             onPause={handlePause}
             onResume={handleResume}

@@ -11,6 +11,7 @@ interface ControlsProps {
   isPaused: boolean;
   isTranscribing: boolean;
   hasMicrophone: boolean | null;
+  isTargetEmpty?: boolean;
   onStart: () => void;
   onPause: () => void;
   onResume: () => void;
@@ -23,13 +24,14 @@ export const Controls: React.FC<ControlsProps> = ({
   isPaused,
   isTranscribing,
   hasMicrophone,
+  isTargetEmpty,
   onStart,
   onPause,
   onResume,
   onStop,
   onReset,
 }) => {
-  const micColor = hasMicrophone === false ? "#ef4444" : "#22c55e";
+  const micColor = (hasMicrophone === false || isTargetEmpty) ? "#ef4444" : "#22c55e";
   const resetColor = hasMicrophone === false ? "#ef4444" : "#f97316";
   const pauseColor = "#eab308"; // Yellow-500
   const stopColor = "#ef4444"; // Red-500
@@ -40,9 +42,9 @@ export const Controls: React.FC<ControlsProps> = ({
       {!isRecording ? (
         <div className="relative">
           <MicButton
-            state={isTranscribing ? "disabled" : "idle"}
+            state={(isTranscribing || isTargetEmpty) ? "disabled" : "idle"}
             onClick={onStart}
-            disabled={isTranscribing || hasMicrophone === false}
+            disabled={isTranscribing || hasMicrophone === false || isTargetEmpty}
             size={100}
           />
         </div>
