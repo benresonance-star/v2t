@@ -114,7 +114,7 @@ export default function Home() {
                     <textarea
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
-                            className="w-full p-12 pr-[50px] pl-[25px] pt-[58px] pb-[58px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block"
+                            className="w-full p-12 pr-[50px] pl-[25px] pt-[58px] pb-[58px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block relative z-10"
                             style={{ boxSizing: 'border-box' }}
                             placeholder="Enter reference text here..."
                       onInput={(e) => {
@@ -130,7 +130,7 @@ export default function Home() {
                       }}
                     />
                   </div>
-                  <div className="flex justify-center pb-[10px]">
+                  <div className="flex justify-center pb-[10px] relative z-50">
                     <motion.button
                       whileHover={{ scale: 1.02, y: -1 }}
                       whileTap={{ scale: 0.97, y: 1 }}
