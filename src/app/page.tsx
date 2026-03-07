@@ -55,23 +55,16 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center py-12 md:py-20 pb-32 md:pb-40 max-w-4xl mx-auto px-[25px] pt-[env(safe-area-inset-top)] relative">
-      {/* Help button - top right, hides on scroll */}
-      <button
-        onClick={() => setShowHelp(true)}
-        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] transition-all duration-300 hover:bg-white/10 shadow-lg w-[28.5px] h-[28.5px] border-[0.5px] p-0 ${helpIconVisible && !isEditing ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-        style={{ borderColor: '#38383d' }}
-        aria-label="How to use"
-      >
-        <span className="text-[18px] font-medium leading-none" style={{ color: '#71717a' }}>?</span>
-      </button>
-
       <div className="w-full flex flex-col gap-8">
         {/* Header */}
         <header className="text-center space-y-6">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="flex justify-center"
+            className="flex justify-center cursor-pointer touch-manipulation"
+            onClick={() => setShowHelp(true)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
             <Image
               src="/logo.png?v=2"
@@ -86,8 +79,9 @@ export default function Home() {
             <motion.h1 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[27px] font-semibold tracking-tight"
+              className="text-[27px] font-semibold tracking-tight cursor-pointer touch-manipulation"
               style={{ color: '#b8b8bc' }}
+              onClick={() => setShowHelp(true)}
             >
               RECITE
             </motion.h1>
