@@ -10,7 +10,7 @@ import { Controls } from "@/components/voiceChecker/Controls";
 import { AlertCircle } from "lucide-react";
 import saveStyles from "./SaveButton.module.css";
 
-const DEFAULT_REFERENCE = "For God so loved the world that he gave his only Son that whoever believes in him should not perish but have eternal life";
+const DEFAULT_REFERENCE = "Please use the edit button to enter your target passage here...";
 
 export default function Home() {
   const [inputText, setInputText] = useState(DEFAULT_REFERENCE);
