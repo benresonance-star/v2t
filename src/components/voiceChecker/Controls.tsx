@@ -80,9 +80,9 @@ export const Controls: React.FC<ControlsProps> = ({
               <div className={finishStyles.reflection} />
 
               {/* Content */}
-              <div className={finishStyles.content + " flex items-center gap-5 px-[35px] py-[17.5px]"}>
-                <CheckCircle2 size={26} style={{ color: "#f97316" }} />
-                <span className="font-bold tracking-wider text-[22.5px]" style={{ color: "#f97316" }}>
+              <div className={finishStyles.content + " flex items-center gap-7 px-[30px] py-[15px]"}>
+                <CheckCircle2 size={22} style={{ color: "#f97316" }} />
+                <span className="font-bold tracking-wider text-[19px]" style={{ color: "#f97316" }}>
                   FINISH RECORDING
                 </span>
               </div>
