@@ -182,7 +182,7 @@ export default function Home() {
         {/* Feedback Area */}
         <section className="mt-[15px] space-y-6">
           <AnimatePresence>
-            {(isTranscribing || transcript) && (
+            {(isTranscribing || (transcript && !isRecording)) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

@@ -37,6 +37,8 @@ export function useVoiceChecker(initialReferenceText: string) {
 
   const handleStart = useCallback(async () => {
     setError(undefined);
+    setTranscript("");
+    setScore(0);
     if (hasMicrophone === false) {
       setError("No microphone detected on this device.");
       return;
