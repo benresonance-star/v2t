@@ -13,11 +13,11 @@
 }
 
 html {
-  background-color: #000000;
+  background-color: #0b0b0b;
 }
 
 body {
-  background: radial-gradient(circle at center, #121214 0%, #000000 100%);
+  background: linear-gradient(to bottom, #0b0b0b 0%, #000000 100%);
   background-attachment: fixed;
   color: var(--foreground);
   min-height: 100vh;
