@@ -47,7 +47,7 @@ export const Controls: React.FC<ControlsProps> = ({
           />
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-14">
+        <div className="flex flex-col items-center gap-[30px]">
           {/* Pause/Resume Button */}
           <div className="relative">
             <MicButton
@@ -80,10 +80,10 @@ export const Controls: React.FC<ControlsProps> = ({
               <div className={finishStyles.reflection} />
 
               {/* Content */}
-              <div className={finishStyles.content + " flex items-center gap-4 px-7 py-3.5"}>
-                <CheckCircle2 size={21} className="text-orange-500" />
-                <span className="text-orange-500 font-medium tracking-tight text-lg">
-                  Finish and check attempt
+              <div className={finishStyles.content + " flex items-center gap-5 px-[35px] py-[17.5px]"}>
+                <CheckCircle2 size={26} style={{ color: "#f97316" }} />
+                <span className="font-bold tracking-wider text-[22.5px]" style={{ color: "#f97316" }}>
+                  FINISH RECORDING
                 </span>
               </div>
             </div>
