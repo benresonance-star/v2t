@@ -42,16 +42,25 @@ export default function Home() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [helpIconVisible, setHelpIconVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setHelpIconVisible(window.scrollY < 50);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px] pt-[env(safe-area-inset-top)] relative">
-      {/* Help button - top right */}
+      {/* Help button - top right, hides on scroll */}
       <button
         onClick={() => setShowHelp(true)}
-        className="fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] text-[#ffffff] transition-all hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[3px] border-white/20 p-0"
+        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[3px] border-white/20 p-0 ${helpIconVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         aria-label="How to use"
       >
-        <span className="text-[18px] font-medium leading-none">?</span>
+        <span className="text-[18px] font-medium leading-none !text-white">?</span>
       </button>
 
       <div className="w-full flex flex-col gap-16">

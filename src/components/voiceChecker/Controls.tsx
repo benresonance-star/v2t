@@ -46,7 +46,7 @@ export const Controls: React.FC<ControlsProps> = ({
           />
         </div>
       ) : (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex flex-col items-center gap-14">
           {/* Pause/Resume Button */}
           <div className="relative">
             <MicButton
@@ -63,12 +63,10 @@ export const Controls: React.FC<ControlsProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             onClick={onStop}
-            className="flex items-center gap-3 px-8 py-4 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all active:scale-95 group shadow-2xl"
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-[#111111] border border-white/5 hover:bg-[#1a1a1a] transition-all active:scale-95 group shadow-xl"
           >
-            <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
-              <CheckCircle2 size={20} className="text-white" />
-            </div>
-            <span className="text-white font-medium tracking-wide text-lg">
+            <CheckCircle2 size={18} className="text-white/90" />
+            <span className="text-white/90 font-medium tracking-tight text-base">
               Finish and check attempt
             </span>
           </motion.button>

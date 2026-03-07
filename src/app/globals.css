@@ -49,3 +49,10 @@ textarea, input, button, select {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.15);
 }
+
+/* Force mid grey text on help button */
+button[aria-label="How to use"],
+button[aria-label="How to use"] * {
+  color: #888888 !important;
+  -webkit-text-fill-color: #888888 !important;
+}
