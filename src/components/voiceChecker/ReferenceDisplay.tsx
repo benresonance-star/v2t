@@ -21,7 +21,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       <div className="flex justify-between items-center px-[25px] relative">
         <div className="flex-1" />
         <h2 
-          className="text-[14px] font-semibold uppercase tracking-wide text-center"
+          className="text-[14px] font-semibold uppercase tracking-[0.0525em] text-center"
           style={{ color: '#71717a' }}
         >
           Target Passage
@@ -37,7 +37,10 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
             <div className={saveStyles.edgeGlow} />
             <div className={saveStyles.shell}>
               <div className={saveStyles.reflection} />
-              <div className={`${saveStyles.content} text-[#ffffff] text-[12px] font-bold uppercase tracking-wider`}>
+              <div 
+                className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
+                style={{ color: '#71717a' }}
+              >
                 {isEditing ? "SAVE" : "EDIT"}
               </div>
             </div>
@@ -46,7 +49,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       </div>
       
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
-        <div className="text-[18px] leading-relaxed font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap">
+        <div className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap">
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
           ) : (

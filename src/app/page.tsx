@@ -58,10 +58,11 @@ export default function Home() {
       {/* Help button - top right, hides on scroll */}
       <button
         onClick={() => setShowHelp(true)}
-        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[0.5px] border-white/30 p-0 ${helpIconVisible && !isEditing ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] transition-all duration-300 hover:bg-white/10 shadow-lg w-[28.5px] h-[28.5px] border-[0.5px] p-0 ${helpIconVisible && !isEditing ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        style={{ borderColor: '#38383d' }}
         aria-label="How to use"
       >
-        <span className="text-[18px] font-medium leading-none !text-white">?</span>
+        <span className="text-[18px] font-medium leading-none" style={{ color: '#71717a' }}>?</span>
       </button>
 
       <div className="w-full flex flex-col gap-8">
@@ -108,7 +109,7 @@ export default function Home() {
                   <div className="flex justify-between items-center px-[25px] relative">
                     <div className="flex-1" />
                     <h2 
-                      className="text-[14px] font-semibold uppercase tracking-wide"
+                      className="text-[14px] font-semibold uppercase tracking-[0.0525em]"
                       style={{ color: '#71717a' }}
                     >
                       Edit Passage
@@ -133,7 +134,10 @@ export default function Home() {
                         <div className={saveStyles.edgeGlow} />
                         <div className={saveStyles.shell}>
                           <div className={saveStyles.reflection} />
-                          <div className={`${saveStyles.content} text-[#ffffff] text-[12px] font-bold uppercase tracking-wider`}>
+                          <div 
+                            className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
+                            style={{ color: '#71717a' }}
+                          >
                             SAVE
                           </div>
                         </div>
