@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { Mic, Pause, Play } from 'lucide-react';
 import clsx from 'clsx';
 import { MicButtonProps } from './MicButton.types';
@@ -33,14 +33,14 @@ export const MicButton: React.FC<MicButtonProps> = ({
   };
 
   // Animation variants
-  const containerVariants = {
+  const containerVariants: Variants = {
     idle: { scale: 1, y: 0 },
     hover: { scale: 1.02, y: -1 },
     pressed: { scale: 0.97, y: 1 },
     disabled: { scale: 1, y: 0 }
   };
 
-  const bloomVariants = {
+  const bloomVariants: Variants = {
     idle: { opacity: 0.4, scale: 1 },
     listening: { 
       opacity: [0.4, 0.8, 0.4],
