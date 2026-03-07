@@ -80,10 +80,10 @@ export default function Home() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               className="text-[27px] font-semibold tracking-tight cursor-pointer touch-manipulation"
-              style={{ color: '#b8b8bc' }}
               onClick={() => setShowHelp(true)}
             >
-              RECITE
+              <span style={{ color: '#38bdf8' }}>RE</span>
+              <span style={{ color: '#f472b6' }}>CITE</span>
             </motion.h1>
           </div>
         </header>
