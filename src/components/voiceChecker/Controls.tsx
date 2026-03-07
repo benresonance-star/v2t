@@ -4,6 +4,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RotateCcw, CheckCircle2 } from "lucide-react";
 import { MicButton } from "../MicButton/MicButton";
+import finishStyles from "./FinishButton.module.css";
 
 interface ControlsProps {
   isRecording: boolean;
@@ -62,13 +63,30 @@ export const Controls: React.FC<ControlsProps> = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.97, y: 1 }}
             onClick={onStop}
-            className="flex items-center gap-3 px-6 py-3 rounded-full bg-[#111111] border border-white/5 hover:bg-[#1a1a1a] transition-all active:scale-95 group shadow-xl"
+            className={finishStyles.container}
           >
-            <CheckCircle2 size={18} className="text-white/90" />
-            <span className="text-white/90 font-medium tracking-tight text-base">
-              Finish and check attempt
-            </span>
+            {/* Background Bloom (Orange tint) */}
+            <div className={finishStyles.bloom} />
+
+            {/* Lower Edge Glow (Orange tint) */}
+            <div className={finishStyles.edgeGlow} />
+
+            {/* The Glass Shell */}
+            <div className={finishStyles.shell}>
+              {/* Top Reflection */}
+              <div className={finishStyles.reflection} />
+
+              {/* Content */}
+              <div className={finishStyles.content + " flex items-center gap-4 px-7 py-3.5"}>
+                <CheckCircle2 size={21} className="text-orange-500" />
+                <span className="text-orange-500 font-medium tracking-tight text-lg">
+                  Finish and check attempt
+                </span>
+              </div>
+            </div>
           </motion.button>
         </div>
       )}
