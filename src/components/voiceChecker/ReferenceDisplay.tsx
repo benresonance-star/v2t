@@ -8,12 +8,14 @@ import saveStyles from "../../app/SaveButton.module.css";
 interface ReferenceDisplayProps {
   alignment: AlignmentResult[];
   isEditing: boolean;
+  isRecording: boolean;
   onEditToggle: () => void;
 }
 
 export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({ 
   alignment, 
   isEditing, 
+  isRecording,
   onEditToggle 
 }) => {
   return (
@@ -49,7 +51,10 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       </div>
       
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
-        <div className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap">
+        <div 
+          className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
+          style={{ opacity: isRecording ? 0.2 : 1 }}
+        >
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
           ) : (

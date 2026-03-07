@@ -176,6 +176,7 @@ export default function Home() {
                 <ReferenceDisplay 
                   alignment={alignment} 
                   isEditing={isEditing}
+                  isRecording={isRecording}
                   onEditToggle={() => setIsEditing(true)}
                 />
               </motion.div>
