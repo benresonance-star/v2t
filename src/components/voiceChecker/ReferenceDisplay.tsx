@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { AlignmentResult } from "../../core/align";
 import saveStyles from "../../app/SaveButton.module.css";
@@ -18,6 +18,26 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
   isRecording,
   onEditToggle 
 }) => {
+  const [isHolding, setIsHolding] = useState(false);
+  const holdTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleStartHold = () => {
+    if (isEditing || isRecording) return;
+    setIsHolding(true);
+    holdTimerRef.current = setTimeout(() => {
+      onEditToggle();
+      setIsHolding(false);
+    }, 700); // 700ms for long hold
+  };
+
+  const handleEndHold = () => {
+    if (holdTimerRef.current) {
+      clearTimeout(holdTimerRef.current);
+      holdTimerRef.current = null;
+    }
+    setIsHolding(false);
+  };
+
   return (
     <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6 relative">
       <div className="flex justify-center items-center px-[25px] relative">
@@ -29,13 +49,22 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         </h2>
       </div>
       
-      <div className="p-12 mx-[25px] mb-[15px] rounded-[1.5rem] min-h-[140px] overflow-hidden">
+      <motion.div 
+        className="p-12 mx-[25px] mb-[15px] rounded-[1.5rem] min-h-[140px] overflow-hidden cursor-pointer touch-none select-none"
+        onMouseDown={handleStartHold}
+        onMouseUp={handleEndHold}
+        onMouseLeave={handleEndHold}
+        onTouchStart={handleStartHold}
+        onTouchEnd={handleEndHold}
+        animate={isHolding ? { scale: 0.98, opacity: 0.8 } : { scale: 1, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+      >
         <div 
           className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
           style={{ opacity: isRecording ? 0.1 : 1 }}
         >
           {alignment.length === 0 ? (
-            <span className="text-zinc-500 italic">Please use the edit button to enter your target passage here...</span>
+            <span className="text-zinc-500 italic">Please long-press here to enter your target passage...</span>
           ) : (
             alignment.map((item, idx) => {
               if (item.status === "whitespace") {
@@ -65,28 +94,9 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
             })
           )}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="flex justify-center pb-[10px]">
-        <motion.button
-          whileHover={{ scale: 1.02, y: -1 }}
-          whileTap={{ scale: 0.97, y: 1 }}
-          onClick={onEditToggle}
-          className={`${saveStyles.container} w-[75px] h-[25px] z-10 touch-manipulation`}
-        >
-          <div className={saveStyles.bloom} />
-          <div className={saveStyles.edgeGlow} />
-          <div className={saveStyles.shell}>
-            <div className={saveStyles.reflection} />
-            <div 
-              className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
-              style={{ color: '#71717a' }}
-            >
-              {isEditing ? "SAVE" : "EDIT"}
-            </div>
-          </div>
-        </motion.button>
-      </div>
+      {/* No buttons here anymore - Edit button removed as requested */}
     </div>
   );
 };
