@@ -21,7 +21,7 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
           <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide px-[25px]">
             Your Speech
           </h2>
-                <div className="text-zinc-100 text-[18px] leading-relaxed min-h-[50px] font-normal p-12 px-[25px] mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] break-words overflow-hidden whitespace-pre-wrap">
+                <div className="text-zinc-100 text-[18px] leading-relaxed min-h-[50px] font-normal p-12 px-[25px] py-[15px] mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] break-words overflow-hidden whitespace-pre-wrap">
             {isTranscribing ? (
               <div className="flex items-center gap-3 text-sky-400">
                 <div className="flex gap-1">

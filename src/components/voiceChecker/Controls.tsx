@@ -35,13 +35,15 @@ export const Controls: React.FC<ControlsProps> = ({
   return (
     <div className="flex items-center justify-center w-full py-[75px] gap-[75px]">
       {/* Reset Button */}
-      <button
-        onClick={onReset}
-        className="w-[100px] h-[50px] rounded-full glass-button text-white hover:bg-white/10 transition-all active:scale-90 shadow-xl flex items-center justify-center"
-        title="Reset"
-      >
-        <RotateCcw size={32} color={resetColor} />
-      </button>
+      {!isRecording && (
+        <button
+          onClick={onReset}
+          className="w-[100px] h-[50px] rounded-full glass-button text-white hover:bg-white/10 transition-all active:scale-90 shadow-xl flex items-center justify-center"
+          title="Reset"
+        >
+          <RotateCcw size={32} color={resetColor} />
+        </button>
+      )}
 
       {/* Recording Controls */}
       {!isRecording ? (
@@ -55,7 +57,7 @@ export const Controls: React.FC<ControlsProps> = ({
           </button>
         </div>
       ) : (
-        <div className="flex items-center gap-[75px]">
+        <div className="flex items-center gap-[37.5px]">
           {/* Pause/Resume Button */}
           <div className="relative">
             <AnimatePresence>
@@ -87,9 +89,9 @@ export const Controls: React.FC<ControlsProps> = ({
           {/* Stop Button */}
           <motion.button
             onClick={onStop}
-            className="w-[100px] h-[50px] rounded-full bg-gradient-to-b from-red-500 to-red-700 border border-white/20 shadow-[inset_0_2px_4px_rgba(255,255,255,0.2),0_0_30px_rgba(239,68,68,0.4)] flex items-center justify-center active:scale-95"
+            className="w-[100px] h-[50px] rounded-full bg-[#ef4444] border border-white/20 shadow-[0_0_30px_rgba(239,68,68,0.4)] flex items-center justify-center active:scale-95"
           >
-            <Square size={32} fill="white" color="#ffffff" />
+            <Square size={32} fill="white" color="white" />
           </motion.button>
         </div>
       )}

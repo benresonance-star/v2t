@@ -3,13 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AlignmentResult } from "../../core/align";
-import { clsx, type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { Edit2, Check } from "lucide-react";
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 interface ReferenceDisplayProps {
   alignment: AlignmentResult[];
@@ -37,7 +30,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       </div>
       
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
-        <div className="text-[18px] leading-relaxed font-normal text-white px-[25px] break-words whitespace-pre-wrap">
+        <div className="text-[18px] leading-relaxed font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap">
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
           ) : (
@@ -57,14 +50,11 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
                   key={idx}
                   initial={false}
                   animate={{
-                    color: "#ffffff",
-                    opacity: item.status === "correct" ? 1 : 0.6,
+                    color: item.status === "substituted" ? "#f97316" : "#ffffff",
+                    opacity: 1,
                   }}
                   transition={{ duration: 0.3 }}
-                  className={cn(
-                    "relative inline",
-                    item.status === "substituted" && "border-b border-amber-400/40"
-                  )}
+                  className="relative inline"
                 >
                   {item.ref}
                 </motion.span>
