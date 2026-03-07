@@ -8,6 +8,7 @@ import { ReferenceDisplay } from "@/components/voiceChecker/ReferenceDisplay";
 import { TranscriptPanel } from "@/components/voiceChecker/TranscriptPanel";
 import { Controls } from "@/components/voiceChecker/Controls";
 import { AlertCircle } from "lucide-react";
+import saveStyles from "./SaveButton.module.css";
 
 const DEFAULT_REFERENCE = "For God so loved the world that he gave his only Son that whoever believes in him should not perish but have eternal life";
 
@@ -57,7 +58,7 @@ export default function Home() {
       {/* Help button - top right, hides on scroll */}
       <button
         onClick={() => setShowHelp(true)}
-        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[0.5px] border-white/30 p-0 ${helpIconVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[0.5px] border-white/30 p-0 ${helpIconVisible && !isEditing ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         aria-label="How to use"
       >
         <span className="text-[18px] font-medium leading-none !text-white">?</span>
@@ -84,7 +85,8 @@ export default function Home() {
             <motion.h1 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-3xl font-semibold text-white tracking-tight"
+              className="text-[27px] font-semibold tracking-tight"
+              style={{ color: '#b8b8bc' }}
             >
               RECITE
             </motion.h1>
@@ -103,28 +105,43 @@ export default function Home() {
                 className="w-full"
               >
                 <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
-                  <div className="flex justify-between items-center px-[25px]">
-                    <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
+                  <div className="flex justify-between items-center px-[25px] relative">
+                    <div className="flex-1" />
+                    <h2 
+                      className="text-[14px] font-semibold uppercase tracking-wide"
+                      style={{ color: '#71717a' }}
+                    >
                       Edit Passage
                     </h2>
-                    <button
-                      onClick={() => {
-                        try {
-                          localStorage.setItem("v2t_target_passage", inputText);
-                          setReferenceText(inputText);
-                          setIsEditing(false);
-                        } catch (e) {
-                          console.error("Failed to save to localStorage:", e);
-                          // Fallback or alert if needed
-                        }
-                      }}
-                      className="flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
-                    >
-                      SAVE
-                    </button>
+                    <div className="flex-1 flex justify-end">
+                      <motion.button
+                        whileHover={{ scale: 1.02, y: -1 }}
+                        whileTap={{ scale: 0.97, y: 1 }}
+                        onClick={() => {
+                          try {
+                            localStorage.setItem("v2t_target_passage", inputText);
+                            setReferenceText(inputText);
+                            setIsEditing(false);
+                          } catch (e) {
+                            console.error("Failed to save to localStorage:", e);
+                            // Fallback or alert if needed
+                          }
+                        }}
+                        className={`${saveStyles.container} w-[85px] h-[32px] z-30 touch-manipulation`}
+                      >
+                        <div className={saveStyles.bloom} />
+                        <div className={saveStyles.edgeGlow} />
+                        <div className={saveStyles.shell}>
+                          <div className={saveStyles.reflection} />
+                          <div className={`${saveStyles.content} text-[#ffffff] text-[12px] font-bold uppercase tracking-wider`}>
+                            SAVE
+                          </div>
+                        </div>
+                      </motion.button>
+                    </div>
                   </div>
                   <div className="mx-[25px] mb-[25px] rounded-[1.5rem] glass-inner overflow-hidden relative">
-                          <textarea
+                    <textarea
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
                             className="w-full p-12 pr-[50px] pl-[25px] pt-[58px] pb-[58px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block"

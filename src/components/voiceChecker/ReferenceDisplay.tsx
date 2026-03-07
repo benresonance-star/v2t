@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { AlignmentResult } from "../../core/align";
+import saveStyles from "../../app/SaveButton.module.css";
 
 interface ReferenceDisplayProps {
   alignment: AlignmentResult[];
@@ -17,16 +18,31 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
 }) => {
   return (
     <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6 relative">
-      <div className="flex justify-center items-center px-[25px]">
-        <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide text-center">
+      <div className="flex justify-between items-center px-[25px] relative">
+        <div className="flex-1" />
+        <h2 
+          className="text-[14px] font-semibold uppercase tracking-wide text-center"
+          style={{ color: '#71717a' }}
+        >
           Target Passage
         </h2>
-        <button
-          onClick={onEditToggle}
-          className="absolute right-[25px] flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
-        >
-          {isEditing ? "SAVE" : "EDIT"}
-        </button>
+        <div className="flex-1 flex justify-end">
+          <motion.button
+            whileHover={{ scale: 1.02, y: -1 }}
+            whileTap={{ scale: 0.97, y: 1 }}
+            onClick={onEditToggle}
+            className={`${saveStyles.container} w-[75px] h-[25px] z-10 touch-manipulation`}
+          >
+            <div className={saveStyles.bloom} />
+            <div className={saveStyles.edgeGlow} />
+            <div className={saveStyles.shell}>
+              <div className={saveStyles.reflection} />
+              <div className={`${saveStyles.content} text-[#ffffff] text-[12px] font-bold uppercase tracking-wider`}>
+                {isEditing ? "SAVE" : "EDIT"}
+              </div>
+            </div>
+          </motion.button>
+        </div>
       </div>
       
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">

@@ -26,7 +26,10 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
     <div className="flex flex-col gap-[25px]">
       <div className="!p-12 glass-panel rounded-[2rem] flex flex-col gap-8">
         <div className="space-y-4">
-          <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide px-[25px] text-center">
+          <h2 
+            className="text-[14px] font-semibold uppercase tracking-wide px-[25px] text-center"
+            style={{ color: '#71717a' }}
+          >
             Your Speech
           </h2>
           <div className="text-zinc-100 text-[18px] leading-relaxed min-h-[50px] font-normal p-12 px-[25px] py-[15px] mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] break-words overflow-hidden whitespace-pre-wrap">
