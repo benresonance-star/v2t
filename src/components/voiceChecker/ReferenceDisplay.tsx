@@ -50,7 +50,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       </div>
       
       <motion.div 
-        className="p-12 mx-[25px] mb-[15px] rounded-[1.5rem] min-h-[140px] overflow-hidden cursor-pointer touch-none select-none"
+        className="p-12 mx-[12.5px] mb-[15px] rounded-[1.5rem] min-h-[140px] overflow-hidden cursor-pointer touch-none select-none"
         onMouseDown={handleStartHold}
         onMouseUp={handleEndHold}
         onMouseLeave={handleEndHold}
@@ -60,7 +60,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         transition={{ duration: 0.2 }}
       >
         <div 
-          className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
+          className="text-[18px] leading-[1.61] font-normal text-white px-[12.5px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
           style={{ opacity: isRecording ? 0.1 : 1 }}
         >
           {alignment.length === 0 ? (
