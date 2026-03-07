@@ -50,7 +50,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         </div>
       </div>
       
-      <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
+      <div className="p-12 mx-[25px] mb-[25px] rounded-[1.5rem] min-h-[140px] overflow-hidden">
         <div 
           className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
           style={{ opacity: isRecording ? 0.1 : 1 }}
