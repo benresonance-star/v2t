@@ -40,4 +40,9 @@ export interface MicButtonProps {
    * Additional CSS class names.
    */
   className?: string;
+
+  /**
+   * Optional color for the icon.
+   */
+  iconColor?: string;
 }

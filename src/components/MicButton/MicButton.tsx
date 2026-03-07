@@ -13,6 +13,7 @@ export const MicButton: React.FC<MicButtonProps> = ({
   onClick,
   ariaLabel = "Microphone",
   className,
+  iconColor,
 }) => {
   const isListening = state === "listening";
   const isDisabled = disabled || state === "disabled";
@@ -86,7 +87,7 @@ export const MicButton: React.FC<MicButtonProps> = ({
         <div className={styles.reflection} />
         
         {/* Icon */}
-        <div className={styles.iconWrapper}>
+        <div className={styles.iconWrapper} style={iconColor ? { color: iconColor, filter: 'none' } : undefined}>
           {renderIcon()}
         </div>
       </div>

@@ -45,6 +45,7 @@ export const Controls: React.FC<ControlsProps> = ({
             state={(isTranscribing || isTargetEmpty) ? "disabled" : "idle"}
             onClick={onStart}
             disabled={isTranscribing || hasMicrophone === false || isTargetEmpty}
+            iconColor={micColor}
             size={100}
           />
         </div>
@@ -56,6 +57,7 @@ export const Controls: React.FC<ControlsProps> = ({
               state={isPaused ? "idle" : "listening"}
               icon={isPaused ? "play" : "pause"}
               onClick={isPaused ? onResume : onPause}
+              iconColor={micColor}
               size={100}
             />
           </div>
