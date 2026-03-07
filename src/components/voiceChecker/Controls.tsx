@@ -35,7 +35,7 @@ export const Controls: React.FC<ControlsProps> = ({
   const stopColor = "#ef4444"; // Red-500
 
   return (
-    <div className="flex flex-col items-center justify-center w-full py-[75px] gap-8">
+    <div className="flex flex-col items-center justify-center w-full py-[30px] gap-8">
       {/* Recording Controls */}
       {!isRecording ? (
         <div className="relative">

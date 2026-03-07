@@ -16,14 +16,14 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
   onEditToggle 
 }) => {
   return (
-    <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
-      <div className="flex justify-between items-center px-[25px]">
-        <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
+    <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6 relative">
+      <div className="flex justify-center items-center px-[25px]">
+        <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide text-center">
           Target Passage
         </h2>
         <button
           onClick={onEditToggle}
-          className="flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
+          className="absolute right-[25px] flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg w-[75px] h-[25px] border-none p-0"
         >
           {isEditing ? "SAVE" : "EDIT"}
         </button>

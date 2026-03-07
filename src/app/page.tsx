@@ -63,7 +63,7 @@ export default function Home() {
         <span className="text-[18px] font-medium leading-none !text-white">?</span>
       </button>
 
-      <div className="w-full flex flex-col gap-16">
+      <div className="w-full flex flex-col gap-8">
         {/* Header */}
         <header className="text-center space-y-6">
           <motion.div
@@ -163,12 +163,24 @@ export default function Home() {
         </section>
 
         {/* Feedback Area */}
-        <section className="mt-[25px] space-y-6">
-          <TranscriptPanel 
-            transcript={transcript} 
-            isTranscribing={isTranscribing} 
-            score={score}
-          />
+        <section className="mt-[15px] space-y-6">
+          <AnimatePresence>
+            {(isTranscribing || transcript) && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <TranscriptPanel 
+                  transcript={transcript} 
+                  isTranscribing={isTranscribing} 
+                  score={score}
+                  alignment={alignment}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <AnimatePresence>
             {error && (
