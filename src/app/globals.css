@@ -12,8 +12,13 @@
   --foreground: #ffffff;
 }
 
+html {
+  background-color: #000000;
+}
+
 body {
   background: radial-gradient(circle at center, #121214 0%, #000000 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;

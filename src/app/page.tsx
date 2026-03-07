@@ -54,7 +54,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen flex flex-col items-center py-12 md:py-20 max-w-4xl mx-auto px-[25px] pt-[env(safe-area-inset-top)] relative">
+    <main className="min-h-screen flex flex-col items-center py-12 md:py-20 pb-32 md:pb-40 max-w-4xl mx-auto px-[25px] pt-[env(safe-area-inset-top)] relative">
       {/* Help button - top right, hides on scroll */}
       <button
         onClick={() => setShowHelp(true)}

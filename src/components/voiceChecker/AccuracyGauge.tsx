@@ -18,7 +18,10 @@ export const AccuracyGauge: React.FC<AccuracyGaugeProps> = ({
 
   return (
     <div className="flex flex-col items-center gap-6">
-      <h2 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide">
+      <h2 
+        className="text-[14px] font-semibold uppercase tracking-wide"
+        style={{ color: '#71717a' }}
+      >
         Accuracy
       </h2>
 
