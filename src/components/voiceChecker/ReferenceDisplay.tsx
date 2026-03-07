@@ -20,37 +20,16 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
 }) => {
   return (
     <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6 relative">
-      <div className="flex justify-between items-center px-[25px] relative">
-        <div className="flex-1" />
+      <div className="flex justify-center items-center px-[25px] relative">
         <h2 
           className="text-[14px] font-semibold uppercase tracking-[0.0525em] text-center"
           style={{ color: '#71717a' }}
         >
           Target Passage
         </h2>
-        <div className="flex-1 flex justify-end">
-          <motion.button
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.97, y: 1 }}
-            onClick={onEditToggle}
-            className={`${saveStyles.container} w-[75px] h-[25px] z-10 touch-manipulation`}
-          >
-            <div className={saveStyles.bloom} />
-            <div className={saveStyles.edgeGlow} />
-            <div className={saveStyles.shell}>
-              <div className={saveStyles.reflection} />
-              <div 
-                className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
-                style={{ color: '#71717a' }}
-              >
-                {isEditing ? "SAVE" : "EDIT"}
-              </div>
-            </div>
-          </motion.button>
-        </div>
       </div>
       
-      <div className="p-12 mx-[25px] mb-[25px] rounded-[1.5rem] min-h-[140px] overflow-hidden">
+      <div className="p-12 mx-[25px] mb-[15px] rounded-[1.5rem] min-h-[140px] overflow-hidden">
         <div 
           className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
           style={{ opacity: isRecording ? 0.1 : 1 }}
@@ -86,6 +65,27 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
             })
           )}
         </div>
+      </div>
+
+      <div className="flex justify-center pb-[10px]">
+        <motion.button
+          whileHover={{ scale: 1.02, y: -1 }}
+          whileTap={{ scale: 0.97, y: 1 }}
+          onClick={onEditToggle}
+          className={`${saveStyles.container} w-[75px] h-[25px] z-10 touch-manipulation`}
+        >
+          <div className={saveStyles.bloom} />
+          <div className={saveStyles.edgeGlow} />
+          <div className={saveStyles.shell}>
+            <div className={saveStyles.reflection} />
+            <div 
+              className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
+              style={{ color: '#71717a' }}
+            >
+              {isEditing ? "SAVE" : "EDIT"}
+            </div>
+          </div>
+        </motion.button>
       </div>
     </div>
   );

@@ -102,45 +102,15 @@ export default function Home() {
                 className="w-full"
               >
                 <div className="p-12 glass-panel rounded-[2rem] flex flex-col gap-6">
-                  <div className="flex justify-between items-center px-[25px] relative">
-                    <div className="flex-1" />
+                  <div className="flex justify-center items-center px-[25px] relative">
                     <h2 
                       className="text-[14px] font-semibold uppercase tracking-[0.0525em]"
                       style={{ color: '#71717a' }}
                     >
                       Edit Passage
                     </h2>
-                    <div className="flex-1 flex justify-end">
-                      <motion.button
-                        whileHover={{ scale: 1.02, y: -1 }}
-                        whileTap={{ scale: 0.97, y: 1 }}
-                        onClick={() => {
-                          try {
-                            localStorage.setItem("v2t_target_passage", inputText);
-                            setReferenceText(inputText);
-                            setIsEditing(false);
-                          } catch (e) {
-                            console.error("Failed to save to localStorage:", e);
-                            // Fallback or alert if needed
-                          }
-                        }}
-                        className={`${saveStyles.container} w-[85px] h-[32px] z-30 touch-manipulation`}
-                      >
-                        <div className={saveStyles.bloom} />
-                        <div className={saveStyles.edgeGlow} />
-                        <div className={saveStyles.shell}>
-                          <div className={saveStyles.reflection} />
-                          <div 
-                            className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
-                            style={{ color: '#71717a' }}
-                          >
-                            SAVE
-                          </div>
-                        </div>
-                      </motion.button>
-                    </div>
                   </div>
-                  <div className="mx-[25px] mb-[25px] rounded-[1.5rem] glass-inner overflow-hidden relative">
+                  <div className="mx-[25px] mb-[15px] rounded-[1.5rem] overflow-hidden relative">
                     <textarea
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
@@ -159,6 +129,35 @@ export default function Home() {
                         }
                       }}
                     />
+                  </div>
+                  <div className="flex justify-center pb-[10px]">
+                    <motion.button
+                      whileHover={{ scale: 1.02, y: -1 }}
+                      whileTap={{ scale: 0.97, y: 1 }}
+                      onClick={() => {
+                        try {
+                          localStorage.setItem("v2t_target_passage", inputText);
+                          setReferenceText(inputText);
+                          setIsEditing(false);
+                        } catch (e) {
+                          console.error("Failed to save to localStorage:", e);
+                          // Fallback or alert if needed
+                        }
+                      }}
+                      className={`${saveStyles.container} w-[85px] h-[32px] z-30 touch-manipulation`}
+                    >
+                      <div className={saveStyles.bloom} />
+                      <div className={saveStyles.edgeGlow} />
+                      <div className={saveStyles.shell}>
+                        <div className={saveStyles.reflection} />
+                        <div 
+                          className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
+                          style={{ color: '#71717a' }}
+                        >
+                          SAVE
+                        </div>
+                      </div>
+                    </motion.button>
                   </div>
                 </div>
               </motion.div>
