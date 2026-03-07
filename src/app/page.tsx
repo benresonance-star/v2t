@@ -10,7 +10,7 @@ import { Controls } from "@/components/voiceChecker/Controls";
 import { AlertCircle } from "lucide-react";
 import saveStyles from "./SaveButton.module.css";
 
-const DEFAULT_REFERENCE = "Please use the edit button to enter your target passage here...";
+const DEFAULT_REFERENCE = "";
 
 export default function Home() {
   const [inputText, setInputText] = useState(DEFAULT_REFERENCE);

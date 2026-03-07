@@ -56,7 +56,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
           style={{ opacity: isRecording ? 0.1 : 1 }}
         >
           {alignment.length === 0 ? (
-            <span className="text-zinc-600 italic">No reference text loaded...</span>
+            <span className="text-zinc-500 italic">Please use the edit button to enter your target passage here...</span>
           ) : (
             alignment.map((item, idx) => {
               if (item.status === "whitespace") {
