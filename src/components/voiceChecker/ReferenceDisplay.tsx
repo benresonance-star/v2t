@@ -53,7 +53,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       <div className="p-12 mx-[25px] mb-[25px] glass-inner rounded-[1.5rem] min-h-[140px] overflow-hidden">
         <div 
           className="text-[18px] leading-[1.61] font-normal text-white px-[25px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
-          style={{ opacity: isRecording ? 0.2 : 1 }}
+          style={{ opacity: isRecording ? 0.1 : 1 }}
         >
           {alignment.length === 0 ? (
             <span className="text-zinc-600 italic">No reference text loaded...</span>
@@ -74,7 +74,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
                   key={idx}
                   initial={false}
                   animate={{
-                    color: item.status === "substituted" ? "#f97316" : "#ffffff",
+                    color: item.status === "correct" ? "#34c759" : item.status === "substituted" ? "#f97316" : "#ffffff",
                     opacity: 1,
                   }}
                   transition={{ duration: 0.3 }}
