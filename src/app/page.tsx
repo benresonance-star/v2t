@@ -57,7 +57,7 @@ export default function Home() {
       {/* Help button - top right, hides on scroll */}
       <button
         onClick={() => setShowHelp(true)}
-        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[3px] border-white/20 p-0 ${helpIconVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        className={`fixed top-[calc(env(safe-area-inset-top)+16px)] right-[25px] z-20 flex items-center justify-center rounded-full bg-[#ffffff0d] !text-white transition-all duration-300 hover:bg-white/10 shadow-lg w-[38px] h-[38px] border-[0.5px] border-white/30 p-0 ${helpIconVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         aria-label="How to use"
       >
         <span className="text-[18px] font-medium leading-none !text-white">?</span>
@@ -227,7 +227,7 @@ export default function Home() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                className="fixed left-1/2 top-1/2 z-40 w-[calc(62.5%-25px)] max-w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 flex flex-col p-0"
+                className="fixed left-1/2 top-1/2 z-40 w-[calc(72.5%-25px)] max-w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 flex flex-col p-0"
                 style={{ background: "#18181b", isolation: "isolate" }}
               >
                 <div className="py-4 text-center border-b border-white/10 bg-[#27272a] rounded-t-[2rem] shrink-0 mt-0">

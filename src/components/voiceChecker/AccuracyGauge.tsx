@@ -22,7 +22,7 @@ export const AccuracyGauge: React.FC<AccuracyGaugeProps> = ({
         Accuracy
       </h2>
 
-      <div className="relative w-full max-w-[400px] mt-4">
+      <div className="relative w-full max-w-[400px] mt-4 px-[15px]">
         {/* Gradient Bar */}
         <div className="h-[12px] w-full rounded-full bg-gradient-to-r from-[#ff3b30] via-[#ffcc00] to-[#34c759] relative overflow-hidden">
           {/* Subtle overlay for depth */}
