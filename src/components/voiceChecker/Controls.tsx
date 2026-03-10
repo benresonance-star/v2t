@@ -72,10 +72,10 @@ export const Controls: React.FC<ControlsProps> = ({
             onClick={onStop}
             className={finishStyles.container}
           >
-            {/* Background Bloom (Orange tint) */}
+            {/* Background Bloom (Green tint) */}
             <div className={finishStyles.bloom} />
 
-            {/* Lower Edge Glow (Orange tint) */}
+            {/* Lower Edge Glow (Green tint) */}
             <div className={finishStyles.edgeGlow} />
 
             {/* The Glass Shell */}
@@ -85,7 +85,7 @@ export const Controls: React.FC<ControlsProps> = ({
 
               {/* Content */}
               <div className={finishStyles.content + " flex items-center justify-center px-[30px] py-[15px]"}>
-                <span className="font-bold tracking-wider text-[19px]" style={{ color: "#c2410c" }}>
+                <span className="font-bold tracking-wider text-[19px] text-white">
                   FINISH RECORDING
                 </span>
               </div>
