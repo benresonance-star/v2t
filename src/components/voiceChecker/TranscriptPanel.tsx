@@ -28,11 +28,11 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
         <div className="space-y-4">
           <h2 
             className="text-[14px] font-semibold uppercase tracking-[0.0525em] px-[25px] text-center"
-            style={{ color: '#71717a' }}
+            style={{ color: 'var(--text-secondary)' }}
           >
             Your Speech
           </h2>
-          <div className="text-zinc-100 text-[18px] leading-[1.61] font-normal p-12 px-[12.5px] py-[15px] mx-[25px] mb-[25px] rounded-[1.5rem] break-words overflow-hidden whitespace-pre-wrap">
+          <div className="text-[var(--foreground)] text-[18px] leading-[1.61] font-normal p-12 px-[12.5px] py-[15px] mx-[25px] mb-[25px] rounded-[1.5rem] break-words overflow-hidden whitespace-pre-wrap">
             {isTranscribing ? (
               <div className="flex items-center gap-3 text-sky-400">
                 <div className="flex gap-1">
@@ -57,7 +57,7 @@ export const TranscriptPanel: React.FC<TranscriptPanelProps> = ({
                 </span>
               </div>
             ) : (
-              <span className="not-italic text-zinc-100 font-medium whitespace-pre-wrap">
+              <span className="not-italic text-[var(--foreground)] font-medium whitespace-pre-wrap">
                 {transcript}
               </span>
             )}

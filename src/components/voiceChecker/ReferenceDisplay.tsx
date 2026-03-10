@@ -46,7 +46,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
       <div className="flex justify-center items-center px-[25px] relative">
         <h2 
           className="text-[14px] font-semibold uppercase tracking-[0.0525em] text-center"
-          style={{ color: '#71717a' }}
+          style={{ color: 'var(--text-secondary)' }}
         >
           Target Passage
         </h2>
@@ -63,11 +63,11 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         transition={{ duration: 0.2 }}
       >
         <div 
-          className="text-[18px] leading-[1.61] font-normal text-white px-[12.5px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
+          className="text-[18px] leading-[1.61] font-normal text-[var(--foreground)] px-[12.5px] py-[10px] break-words whitespace-pre-wrap transition-opacity duration-500"
           style={{ opacity: isRecording ? 0.1 : 1 }}
         >
           {alignment.length === 0 ? (
-            <span className="text-zinc-500 italic">Please long-press here to enter your target passage...</span>
+            <span className="text-[var(--text-secondary)] italic">Please long-press here to enter your target passage...</span>
           ) : (
             alignment.map((item, idx) => {
               if (item.status === "whitespace") {
@@ -85,7 +85,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
                   key={idx}
                   initial={false}
                   animate={{
-                    color: item.status === "correct" ? "#34c759" : item.status === "substituted" ? "#f97316" : "#ffffff",
+                    color: item.status === "correct" ? "#34c759" : item.status === "substituted" ? "#f97316" : "var(--foreground)",
                     opacity: 1,
                   }}
                   transition={{ duration: 0.3 }}

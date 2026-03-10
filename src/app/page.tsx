@@ -7,13 +7,32 @@ import { useVoiceChecker } from "@/hooks/useVoiceChecker";
 import { ReferenceDisplay } from "@/components/voiceChecker/ReferenceDisplay";
 import { TranscriptPanel } from "@/components/voiceChecker/TranscriptPanel";
 import { Controls } from "@/components/voiceChecker/Controls";
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, Moon, Sun } from "lucide-react";
 import saveStyles from "./SaveButton.module.css";
 
 const DEFAULT_REFERENCE = "";
 
 export default function Home() {
   const [inputText, setInputText] = useState(DEFAULT_REFERENCE);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  // Load theme from localStorage
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("v2t_theme") as 'dark' | 'light';
+    if (savedTheme) {
+      setTheme(savedTheme);
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem("v2t_theme", newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
 
   const {
     alignment,
@@ -84,8 +103,8 @@ export default function Home() {
               className="text-[27px] font-semibold tracking-tight cursor-pointer touch-manipulation"
               onClick={() => setShowHelp(true)}
             >
-              <span style={{ color: '#38bdf8' }}>RE</span>
-              <span style={{ color: '#f472b6' }}>CITE</span>
+              <span style={{ color: 'var(--accent-blue)' }}>RE</span>
+              <span style={{ color: 'var(--accent-pink)' }}>CITE</span>
             </motion.h1>
           </div>
         </header>
@@ -105,7 +124,7 @@ export default function Home() {
                   <div className="flex justify-center items-center px-[25px] relative">
                     <h2 
                       className="text-[14px] font-semibold uppercase tracking-[0.0525em]"
-                      style={{ color: '#71717a' }}
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       Edit Passage
                     </h2>
@@ -114,7 +133,7 @@ export default function Home() {
                     <textarea
                             value={inputText}
                             onChange={(e) => setInputText(e.target.value)}
-                            className="w-full p-12 pr-[12.5px] pl-[12.5px] pt-[58px] pb-[58px] min-h-[160px] !text-[#ffffff] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block relative z-10"
+                            className="w-full p-12 pr-[12.5px] pl-[12.5px] pt-[58px] pb-[58px] min-h-[160px] !text-[var(--foreground)] outline-none transition-all text-[18px] leading-relaxed resize-none font-normal bg-transparent border-none focus:ring-0 overflow-hidden block relative z-10"
                             style={{ boxSizing: 'border-box' }}
                             placeholder="Enter reference text here..."
                       onInput={(e) => {
@@ -152,7 +171,7 @@ export default function Home() {
                         <div className={saveStyles.reflection} />
                         <div 
                           className={`${saveStyles.content} text-[12px] font-bold uppercase tracking-wider`}
-                          style={{ color: '#71717a' }}
+                          style={{ color: 'var(--text-secondary)' }}
                         >
                           SAVE
                         </div>
@@ -249,31 +268,70 @@ export default function Home() {
                 className="fixed left-1/2 top-1/2 z-40 w-[calc(72.5%-25px)] max-w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] overflow-hidden shadow-2xl border border-white/10 flex flex-col p-0"
                 style={{ background: "#18181b", isolation: "isolate" }}
               >
-                <div className="py-4 text-center border-b border-white/10 bg-[#27272a] rounded-t-[2rem] shrink-0 mt-0">
-                  <h4 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide m-0">How to use</h4>
+                <div className="py-4 text-center border-b border-white/10 bg-[#27272a] rounded-t-[2rem] shrink-0 mt-0" style={theme === 'light' ? { background: '#e5e5ea', borderColor: 'rgba(0,0,0,0.05)' } : {}}>
+                  <h4 className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide m-0" style={theme === 'light' ? { color: '#1c1c1e' } : {}}>How to use</h4>
                 </div>
-                <div className="p-6 space-y-4 bg-[#18181b] text-center">
-                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3">
-                    <span className="mr-[10px] font-bold text-zinc-400">1</span>
+                <div className="p-6 space-y-4 bg-[#18181b] text-center" style={theme === 'light' ? { background: '#f5f3f1' } : {}}>
+                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3" style={theme === 'light' ? { color: '#8e8e93' } : {}}>
+                    <span className="mr-[10px] font-bold text-zinc-400" style={theme === 'light' ? { color: '#1c1c1e' } : {}}>1</span>
                     Tap the mic to begin reciting
                   </p>
-                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3">
-                    <span className="mr-[10px] font-bold text-zinc-400">2</span>
+                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3" style={theme === 'light' ? { color: '#8e8e93' } : {}}>
+                    <span className="mr-[10px] font-bold text-zinc-400" style={theme === 'light' ? { color: '#1c1c1e' } : {}}>2</span>
                     Pause anytime to catch your breath
                   </p>
-                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3">
-                    <span className="mr-[10px] font-bold text-zinc-400">3</span>
+                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3" style={theme === 'light' ? { color: '#8e8e93' } : {}}>
+                    <span className="mr-[10px] font-bold text-zinc-400" style={theme === 'light' ? { color: '#1c1c1e' } : {}}>3</span>
                     Tap Stop to check your accuracy
                   </p>
-                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3">
-                    <span className="mr-[10px] font-bold text-zinc-400">4</span>
+                  <p className="text-[13px] font-medium text-[#878787] leading-relaxed py-2 px-3" style={theme === 'light' ? { color: '#8e8e93' } : {}}>
+                    <span className="mr-[10px] font-bold text-zinc-400" style={theme === 'light' ? { color: '#1c1c1e' } : {}}>4</span>
                     Paste or type a passage using Edit
                   </p>
+
+                  {/* Theme Toggle Switch */}
+                  <div className="pt-6 border-t border-white/5 mt-6" style={theme === 'light' ? { borderColor: 'rgba(0,0,0,0.05)' } : {}}>
+                    <div className="flex flex-col items-center gap-3">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em]" style={{ color: theme === 'light' ? '#8e8e93' : '#71717a' }}>
+                        Appearance
+                      </span>
+                      <button
+                        onClick={toggleTheme}
+                        className="relative w-[140px] h-[44px] rounded-full transition-all duration-500 focus:outline-none p-1 flex items-center shadow-inner overflow-hidden"
+                        style={{ 
+                          background: theme === 'dark' ? '#27272a' : '#e5e5ea',
+                          boxShadow: theme === 'light' ? 'inset 0 2px 4px rgba(0,0,0,0.05)' : 'inset 0 2px 4px rgba(0,0,0,0.2)'
+                        }}
+                      >
+                        {/* Labels inside the pill */}
+                        <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+                          <Moon size={14} className={theme === 'dark' ? 'text-white' : 'text-zinc-400'} />
+                          <Sun size={14} className={theme === 'light' ? 'text-orange-500' : 'text-zinc-600'} />
+                        </div>
+
+                        {/* Sliding Ball */}
+                        <motion.div
+                          className="w-[64px] h-[36px] rounded-full bg-white shadow-lg flex items-center justify-center z-10"
+                          animate={{ x: theme === 'dark' ? 0 : 68 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                          style={{
+                            background: theme === 'dark' ? '#3f3f46' : '#ffffff',
+                            boxShadow: theme === 'dark' ? '0 2px 8px rgba(0,0,0,0.4)' : '0 2px 8px rgba(0,0,0,0.1)'
+                          }}
+                        >
+                          <span className="text-[9px] font-bold uppercase tracking-wider" style={{ color: theme === 'dark' ? '#ffffff' : '#1c1c1e' }}>
+                            {theme === 'dark' ? 'DARK' : 'LIGHT'}
+                          </span>
+                        </motion.div>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div className="p-4 border-t border-white/10 bg-[#18181b]">
+                <div className="p-4 border-t border-white/10 bg-[#18181b]" style={theme === 'light' ? { background: '#f5f3f1', borderColor: 'rgba(0,0,0,0.05)' } : {}}>
                   <button
                     onClick={() => setShowHelp(false)}
                     className="w-full flex items-center justify-center rounded-[35px] bg-[#ffffff0d] text-[#ffffff] text-[12px] font-bold uppercase transition-all hover:bg-white/10 shadow-lg h-[35px] border-none p-0"
+                    style={theme === 'light' ? { background: '#e5e5ea', color: '#1c1c1e' } : {}}
                   >
                     Close
                   </button>

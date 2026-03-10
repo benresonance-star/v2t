@@ -20,7 +20,7 @@ export const AccuracyGauge: React.FC<AccuracyGaugeProps> = ({
     <div className="flex flex-col items-center gap-6">
       <h2 
         className="text-[14px] font-semibold uppercase tracking-[0.0525em]"
-        style={{ color: '#71717a' }}
+        style={{ color: 'var(--text-secondary)' }}
       >
         Accuracy
       </h2>
@@ -52,11 +52,11 @@ export const AccuracyGauge: React.FC<AccuracyGaugeProps> = ({
       </div>
 
       <div className="flex flex-col items-center gap-1 mt-2">
-        <span className="text-[14px] font-semibold text-zinc-100 uppercase tracking-wide leading-none pt-[5px]">
+        <span className="text-[14px] font-semibold text-[var(--foreground)] uppercase tracking-wide leading-none pt-[5px]">
           {percentage}%
         </span>
         {matchedWords !== undefined && totalWords !== undefined && (
-          <span className="text-zinc-400 text-[16px] font-medium pb-[10px]">
+          <span className="text-[var(--text-secondary)] text-[16px] font-medium pb-[10px]">
             Matched words: {matchedWords} / {totalWords}
           </span>
         )}
