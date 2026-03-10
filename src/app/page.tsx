@@ -172,6 +172,7 @@ export default function Home() {
                   alignment={alignment} 
                   isEditing={isEditing}
                   isRecording={isRecording}
+                  isPaused={isPaused}
                   onEditToggle={() => setIsEditing(true)}
                 />
               </motion.div>

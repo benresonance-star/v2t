@@ -10,6 +10,7 @@ interface ReferenceDisplayProps {
   alignment: AlignmentResult[];
   isEditing: boolean;
   isRecording: boolean;
+  isPaused?: boolean;
   onEditToggle: () => void;
 }
 
@@ -17,6 +18,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
   alignment, 
   isEditing, 
   isRecording,
+  isPaused,
   onEditToggle 
 }) => {
   const [isHolding, setIsHolding] = useState(false);
@@ -106,7 +108,7 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
               exit={{ opacity: 0, y: 10 }}
               className="pb-4"
             >
-              <VoiceVisualizer isRecording={isRecording} />
+              <VoiceVisualizer isRecording={isRecording} isPaused={isPaused} />
             </motion.div>
           )}
         </AnimatePresence>

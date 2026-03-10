@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 
 interface VoiceVisualizerProps {
   isRecording: boolean;
+  isPaused?: boolean;
 }
 
-export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording }) => {
+export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording, isPaused }) => {
   // Generate 25 bars with varying base heights and animation properties
   const bars = Array.from({ length: 25 }).map((_, i) => {
     const distanceFromCenter = Math.abs(i - 12);
@@ -51,7 +52,10 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording })
             className="w-[3px] rounded-full"
             style={{ backgroundColor: bar.color }}
             initial={{ height: bar.baseHeight }}
-            animate={{
+            animate={isPaused ? {
+              height: bar.baseHeight,
+              opacity: 0.6,
+            } : {
               height: [
                 bar.baseHeight, 
                 bar.baseHeight * bar.multiplier, 
