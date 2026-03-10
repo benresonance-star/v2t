@@ -42,11 +42,11 @@ html {
 }
 
 [data-theme='light'] html {
-  background-color: #fdfcfb !important;
+  background-color: #e5e4e2 !important;
 }
 
 [data-theme='dark'] html {
-  background-color: #0b0b0b !important;
+  background-color: #000000 !important;
 }
 
 body {
@@ -60,12 +60,11 @@ body {
 }
 
 [data-theme='light'] body {
-  background: linear-gradient(to bottom, #fdfcfb 0%, #e2e2e2 50%, #cfcfcf 100%);
-  background-attachment: fixed;
+  background: var(--background);
 }
 
 [data-theme='dark'] body {
-  background: linear-gradient(to bottom, #0b0b0b 0%, #000000 100%);
+  background: var(--background);
 }
 
 button {
