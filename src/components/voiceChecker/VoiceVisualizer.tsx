@@ -29,11 +29,11 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording })
       initial={{ opacity: 0, scale: 0.9, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 10 }}
-      className="flex items-center gap-4 px-5 py-2.5 bg-white/[0.08] backdrop-blur-xl rounded-full border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-[280px] h-[54px] mx-auto overflow-hidden shrink-0"
+      className="flex items-center gap-6 px-8 py-2.5 bg-white/[0.08] backdrop-blur-xl rounded-full border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-[320px] h-[54px] mx-auto overflow-hidden shrink-0"
     >
       {/* Microphone Icon with soft background */}
-      <div className="w-9 h-9 rounded-full bg-white/[0.12] flex items-center justify-center border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] shrink-0">
-        <Mic size={16} className="text-white" strokeWidth={2.5} />
+      <div className="w-11 h-11 rounded-full bg-white/[0.12] flex items-center justify-center border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] shrink-0">
+        <Mic size={24} className="text-white" strokeWidth={2.5} />
       </div>
 
       {/* Animated Bands */}
@@ -41,7 +41,8 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording })
         {bars.map((bar) => (
           <motion.div
             key={bar.id}
-            className="w-[3px] bg-white rounded-full"
+            className="w-[3px] rounded-full"
+            style={{ backgroundColor: '#ffffff' }}
             initial={{ height: bar.baseHeight }}
             animate={{
               height: [
