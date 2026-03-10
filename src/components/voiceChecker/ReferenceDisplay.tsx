@@ -97,13 +97,20 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
         </div>
       </motion.div>
 
-      <AnimatePresence>
-        {isRecording && (
-          <div className="flex justify-center pb-4">
-            <VoiceVisualizer isRecording={isRecording} />
-          </div>
-        )}
-      </AnimatePresence>
+      <div className="h-[70px] flex items-center justify-center">
+        <AnimatePresence>
+          {isRecording && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              className="pb-4"
+            >
+              <VoiceVisualizer isRecording={isRecording} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
 
       {/* No buttons here anymore - Edit button removed as requested */}
     </div>
