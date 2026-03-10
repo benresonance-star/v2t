@@ -56,7 +56,7 @@ body {
 }
 
 [data-theme='light'] body {
-  background: linear-gradient(135deg, #fdfcfb 0%, #e2e2e2 50%, #cfcfcf 100%);
+  background: linear-gradient(to bottom, #fdfcfb 0%, #e2e2e2 50%, #cfcfcf 100%);
   background-attachment: fixed;
 }
 
