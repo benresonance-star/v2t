@@ -7,7 +7,7 @@ import { useVoiceChecker } from "@/hooks/useVoiceChecker";
 import { ReferenceDisplay } from "@/components/voiceChecker/ReferenceDisplay";
 import { TranscriptPanel } from "@/components/voiceChecker/TranscriptPanel";
 import { Controls } from "@/components/voiceChecker/Controls";
-import { AlertCircle, Moon, Sun } from "lucide-react";
+import { AlertCircle, Moon, Sun, Mic } from "lucide-react";
 import saveStyles from "./SaveButton.module.css";
 
 const DEFAULT_REFERENCE = "";
