@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { AlignmentResult } from "../../core/align";
 import saveStyles from "../../app/SaveButton.module.css";
+import { VoiceVisualizer } from "./VoiceVisualizer";
 
 interface ReferenceDisplayProps {
   alignment: AlignmentResult[];
@@ -95,6 +96,14 @@ export const ReferenceDisplay: React.FC<ReferenceDisplayProps> = ({
           )}
         </div>
       </motion.div>
+
+      <AnimatePresence>
+        {isRecording && (
+          <div className="flex justify-center pb-4">
+            <VoiceVisualizer isRecording={isRecording} />
+          </div>
+        )}
+      </AnimatePresence>
 
       {/* No buttons here anymore - Edit button removed as requested */}
     </div>
