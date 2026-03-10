@@ -2,7 +2,6 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mic } from "lucide-react";
 
 interface VoiceVisualizerProps {
   isRecording: boolean;
@@ -13,12 +12,25 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording })
   const bars = Array.from({ length: 25 }).map((_, i) => {
     const distanceFromCenter = Math.abs(i - 12);
     const baseHeight = Math.max(4, 16 - distanceFromCenter * 0.8);
+    
+    // Calculate color interpolation between blue (#38bdf8) and pink (#f472b6)
+    // i ranges from 0 to 24
+    const ratio = i / 24;
+    // Simple linear interpolation (lerp) for colors
+    // Blue: R=56, G=189, B=248
+    // Pink: R=244, G=114, B=182
+    const r = Math.round(56 + (244 - 56) * ratio);
+    const g = Math.round(189 + (114 - 189) * ratio);
+    const b = Math.round(248 + (182 - 248) * ratio);
+    const color = `rgb(${r}, ${g}, ${b})`;
+
     return {
       id: i,
       baseHeight,
       duration: 0.6 + Math.random() * 0.4,
       delay: i * 0.03,
       multiplier: 1.5 + Math.random() * 2,
+      color,
     };
   });
 
@@ -29,20 +41,15 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording })
       initial={{ opacity: 0, scale: 0.9, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: 10 }}
-      className="flex items-center gap-6 px-8 py-2.5 bg-white/[0.08] backdrop-blur-xl rounded-full border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.6)] w-[320px] h-[54px] mx-auto overflow-hidden shrink-0"
+      className="flex items-center justify-center w-[320px] h-[54px] mx-auto overflow-hidden shrink-0"
     >
-      {/* Microphone Icon with soft background */}
-      <div className="w-11 h-11 rounded-full bg-white/[0.12] flex items-center justify-center border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] shrink-0">
-        <Mic size={24} className="text-white" strokeWidth={2.5} />
-      </div>
-
       {/* Animated Bands */}
       <div className="flex items-center gap-[3px] h-full px-1 flex-1 justify-center">
         {bars.map((bar) => (
           <motion.div
             key={bar.id}
             className="w-[3px] rounded-full"
-            style={{ backgroundColor: '#ffffff' }}
+            style={{ backgroundColor: bar.color }}
             initial={{ height: bar.baseHeight }}
             animate={{
               height: [
