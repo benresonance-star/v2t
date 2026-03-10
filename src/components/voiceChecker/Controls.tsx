@@ -85,7 +85,7 @@ export const Controls: React.FC<ControlsProps> = ({
 
               {/* Content */}
               <div className={finishStyles.content + " flex items-center justify-center px-[30px] py-[15px]"}>
-                <span className="font-bold tracking-wider text-[19px] text-white">
+                <span className="font-bold tracking-wider text-[19px] !text-white">
                   FINISH RECORDING
                 </span>
               </div>
