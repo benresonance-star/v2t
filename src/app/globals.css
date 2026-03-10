@@ -45,6 +45,10 @@ html {
   background-color: #fdfcfb !important;
 }
 
+[data-theme='dark'] html {
+  background-color: #0b0b0b !important;
+}
+
 body {
   background: var(--background);
   background-attachment: fixed;
