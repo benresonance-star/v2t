@@ -14,16 +14,23 @@ export const VoiceVisualizer: React.FC<VoiceVisualizerProps> = ({ isRecording, i
     const distanceFromCenter = Math.abs(i - 12);
     const baseHeight = Math.max(4, 16 - distanceFromCenter * 0.8);
     
-    // Calculate color interpolation between blue (#38bdf8) and pink (#f472b6)
-    // i ranges from 0 to 24
-    const ratio = i / 24;
-    // Simple linear interpolation (lerp) for colors
-    // Blue: R=56, G=189, B=248
-    // Pink: R=244, G=114, B=182
-    const r = Math.round(56 + (244 - 56) * ratio);
-    const g = Math.round(189 + (114 - 189) * ratio);
-    const b = Math.round(248 + (182 - 248) * ratio);
-    const color = `rgb(${r}, ${g}, ${b})`;
+    // Default gradient colors
+    let color = '';
+    
+    if (isRecording) {
+      // Calculate color interpolation between blue (#38bdf8) and pink (#f472b6)
+      // i ranges from 0 to 24
+      const ratio = i / 24;
+      // Blue: R=56, G=189, B=248
+      // Pink: R=244, G=114, B=182
+      const r = Math.round(56 + (244 - 56) * ratio);
+      const g = Math.round(189 + (114 - 189) * ratio);
+      const b = Math.round(248 + (182 - 248) * ratio);
+      color = `rgb(${r}, ${g}, ${b})`;
+    } else {
+      // In light mode when not recording, bars could be dark grey to match image
+      color = '#333333';
+    }
 
     return {
       id: i,

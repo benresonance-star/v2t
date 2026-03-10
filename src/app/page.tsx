@@ -87,24 +87,37 @@ export default function Home() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Image
-              src="/logo.png?v=2"
-              alt="RECITE Logo"
-              width={91}
-              height={91}
-              className="object-contain shadow-2xl"
-              priority
-            />
+            {theme === 'dark' ? (
+              <Image
+                src="/logo.png?v=2"
+                alt="RECITE Logo"
+                width={91}
+                height={91}
+                className="object-contain shadow-2xl"
+                priority
+              />
+            ) : (
+              <div className="w-[91px] h-[91px] flex items-center justify-center">
+                <Mic size={48} className="text-[#333333]" strokeWidth={1.5} />
+              </div>
+            )}
           </motion.div>
           <div className="space-y-2 -mt-[15px]">
             <motion.h1 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-[27px] font-semibold tracking-tight cursor-pointer touch-manipulation"
+              className="text-[27px] font-semibold tracking-tight cursor-pointer touch-manipulation uppercase"
               onClick={() => setShowHelp(true)}
+              style={{ color: theme === 'light' ? '#333333' : undefined }}
             >
-              <span style={{ color: 'var(--accent-blue)' }}>RE</span>
-              <span style={{ color: 'var(--accent-pink)' }}>CITE</span>
+              {theme === 'dark' ? (
+                <>
+                  <span style={{ color: 'var(--accent-blue)' }}>RE</span>
+                  <span style={{ color: 'var(--accent-pink)' }}>CITE</span>
+                </>
+              ) : (
+                "RECITE"
+              )}
             </motion.h1>
           </div>
         </header>
