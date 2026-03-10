@@ -66,9 +66,18 @@
 }
 
 [data-theme='light'] .shell {
-  background: #f5f3f1;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  background: #f0eee9;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.15), 
+    0 8px 10px -6px rgba(0, 0, 0, 0.1), 
+    inset 0 2px 3px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='light'] .content {
+  color: #333333;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.8));
 }
 
 [data-theme='light'] .bloom,
