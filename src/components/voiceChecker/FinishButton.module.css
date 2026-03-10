@@ -66,18 +66,18 @@
 }
 
 [data-theme='light'] .shell {
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: linear-gradient(145deg, #22c55e, #16a34a);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
     8px 8px 16px #bebebe,
     -8px -8px 16px #ffffff,
-    inset 2px 2px 5px rgba(255, 255, 255, 0.5),
-    inset -2px -2px 5px rgba(0, 0, 0, 0.05);
+    inset 2px 2px 5px rgba(255, 255, 255, 0.3),
+    inset -2px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='light'] .content {
-  color: #333333;
-  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.8));
+  color: #ffffff;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
 }
 
 [data-theme='light'] .bloom,
