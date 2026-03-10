@@ -25,7 +25,10 @@
   --foreground: #333333;
   --panel-bg: #f0eee9;
   --panel-border: rgba(0, 0, 0, 0.05);
-  --panel-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1), 0 4px 12px -4px rgba(0, 0, 0, 0.05);
+  --panel-shadow: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.1), 
+    0 4px 12px -4px rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px rgba(0, 0, 0, 0.06);
   --text-primary: #333333;
   --text-secondary: #7a7a7a;
   --accent-blue: #333333;
