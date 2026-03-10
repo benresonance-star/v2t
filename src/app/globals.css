@@ -42,7 +42,7 @@ html {
 }
 
 [data-theme='light'] html {
-  background-color: #fdfcfb;
+  background-color: #fdfcfb !important;
 }
 
 body {
